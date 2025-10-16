@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     canonical: '/',
     languages: getAlternativeLocales(),
   },
+  manifest: '/manifest.json',
   title: 'Gamer Haven - The Ultimate Game Modding Playground',
   description:
     'Welcome to Gamer Haven – your one-stop destination for epic game mods, customizations, and tools to level up your gaming experience. Whether you’re hunting for the latest mods, exploring new game content, or customizing your gameplay, we’ve got you covered.',
