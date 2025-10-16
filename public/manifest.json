@@ -1,12 +1,12 @@
 {
-  "theme_color": "#39AEB3",
-  "background_color": "#FFFFFF",
+  "theme_color": "#F54A00",
+  "background_color": "#1E1E1E",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "Game Heaven - Your Ultimate Online Game Shop",
-  "short_name": "Game Heaven",
-  "description": "Game Heaven is your one-stop online game shop for the latest video games, accessories, and collectibles. We offer a wide selection of gaming products, unbeatable deals, and reliable customer service for gamers of all levels.",
+  "name": "Gamer Haven - The Ultimate Game Modding Playground",
+  "short_name": "Gamer Haven",
+  "description": "Welcome to Gamer Haven – your one-stop destination for epic game mods, customizations, and tools to level up your gaming experience. Whether you’re hunting for the latest mods, exploring new game content, or customizing your gameplay, we’ve got you covered.",
   "icons": [
     {
       "src": "/icon-192x192.png",
