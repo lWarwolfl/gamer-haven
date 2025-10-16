@@ -31,12 +31,12 @@ export function useLinks() {
     const socialItems = [
       {
         name: 'Mail',
-        icon: 'circum:mail',
+        icon: 'ph:envelope-simple',
         url: 'mailto:sinakheiri.dev@gmail.com',
       },
       {
         name: 'Linkedin',
-        icon: 'circum:linkedin',
+        icon: 'ph:linkedin-logo',
         url: 'https://www.linkedin.com/in/sinakheiri-dev',
       },
       {

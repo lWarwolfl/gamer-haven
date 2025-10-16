@@ -5,6 +5,7 @@
       "mods": "Mods"
     }
   },
+  "header": { "search": "Search", "search-placeholder": "Your favourite mod..." },
   "footer": { "language": "Choose a language" },
   "home": { "hello": "Hello World!" }
 }

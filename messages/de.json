@@ -5,6 +5,10 @@
       "mods": "Mods"
     }
   },
+  "header": {
+    "search": "Suche",
+    "search-placeholder": "Deine Lieblingsmod..."
+  },
   "footer": {
     "language": "Wählen Sie eine Sprache"
   },
