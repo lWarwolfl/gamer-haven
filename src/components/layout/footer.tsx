@@ -1,5 +1,6 @@
 'use client'
 
+import LanguageSelector from '@/components/common/language-selector'
 import { Button } from '@/components/ui/button'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { useLinks } from '@/lib/hooks/useLinks.hook'
@@ -20,6 +21,8 @@ export default function Footer() {
       </div>
 
       <div className="flex items-center gap-3">
+        <LanguageSelector />
+
         <TooltipProvider>
           {socialItems.map((item) => (
             <Tooltip key={item.name}>
@@ -27,7 +30,7 @@ export default function Footer() {
                 <Button
                   size="icon"
                   variant="secondary"
-                  className="bg-secondary/50 hover:bg-secondary/70"
+                  className="bg-secondary/60 hover:bg-secondary/40"
                   asChild
                 >
                   <Link href={item.url} target="_blank">

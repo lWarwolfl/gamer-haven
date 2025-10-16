@@ -5,6 +5,9 @@
       "mods": "Mods"
     }
   },
+  "footer": {
+    "language": "Wählen Sie eine Sprache"
+  },
   "home": {
     "hello": "Hallo Welt!"
   }

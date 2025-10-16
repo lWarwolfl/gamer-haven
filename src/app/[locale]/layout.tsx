@@ -1,4 +1,4 @@
-import Footer from '@/components/layout/footer1'
+import Footer from '@/components/layout/footer'
 import { type PropsWithChildren } from 'react'
 
 export default async function MainLayout({ children }: PropsWithChildren) {
