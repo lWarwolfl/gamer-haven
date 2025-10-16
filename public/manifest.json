@@ -1,0 +1,32 @@
+{
+  "theme_color": "#39AEB3",
+  "background_color": "#FFFFFF",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "name": "Game Heaven - Your Ultimate Online Game Shop",
+  "short_name": "Game Heaven",
+  "description": "Game Heaven is your one-stop online game shop for the latest video games, accessories, and collectibles. We offer a wide selection of gaming products, unbeatable deals, and reliable customer service for gamers of all levels.",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
