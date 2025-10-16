@@ -36,12 +36,13 @@ export default async function RootLayout({ children }: PropsWithChildren) {
   const locale = await getLocaleWithProps()
 
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        lang={locale.locale}
-        dir={locale.direction}
-        className={cn(locale.font?.variable, 'antialiased')}
-      >
+    <html
+      lang={locale.locale}
+      dir={locale.direction}
+      suppressHydrationWarning
+      className={cn(locale.font?.variable)}
+    >
+      <body className={cn(locale.font?.className, 'antialiased')}>
         <WrappedProviders>{children}</WrappedProviders>
       </body>
     </html>
