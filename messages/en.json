@@ -1,1 +1,9 @@
-{ "global": {}, "home": { "hello": "Hello World!" } }
+{
+  "global": {
+    "routes": {
+      "games": "Games",
+      "mods": "Mods"
+    }
+  },
+  "home": { "hello": "Hello World!" }
+}

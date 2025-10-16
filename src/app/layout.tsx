@@ -1,4 +1,5 @@
 import WrappedProviders from '@/components/providers/wrapped-providers'
+import ReactScan from '@/components/utils/react-scan'
 import { HOST } from '@/config'
 import { getAlternativeLocales, getLocaleWithProps } from '@/i18n/i18n-configs'
 import { cn } from '@/lib/utils'
@@ -45,6 +46,8 @@ export default async function RootLayout({ children }: PropsWithChildren) {
     >
       <body className={cn(locale.font?.className, 'antialiased')}>
         <WrappedProviders>{children}</WrappedProviders>
+
+        <ReactScan />
       </body>
     </html>
   )
