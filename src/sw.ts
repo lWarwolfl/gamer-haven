@@ -1,5 +1,4 @@
 //import firebase service worker
-import '@/features/firebase/firebase-messaging-sw'
 import type { PrecacheEntry, SerwistGlobalConfig } from 'serwist'
 import { disableDevLogs, Serwist } from 'serwist'
 
