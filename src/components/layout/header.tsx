@@ -4,6 +4,7 @@ import SearchBar from '@/components/common/search-bar'
 import { ThemeToggle } from '@/components/common/theme-handler'
 import { Button } from '@/components/ui/button'
 import { useLinks } from '@/lib/hooks/useLinks.hook'
+import { cn } from '@/lib/utils'
 import logo from '@public/logo.svg'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -22,7 +23,12 @@ export default function Header() {
 
           <div className="flex items-center gap-3">
             {mainItems.map((item) => (
-              <Button key={item.name} variant="secondary" asChild>
+              <Button
+                key={item.name}
+                variant={item.isActive ? 'default' : 'secondary'}
+                className={cn({ 'pointer-events-none': item.isActive })}
+                asChild
+              >
                 <Link href={item.path}>{item.name}</Link>
               </Button>
             ))}
