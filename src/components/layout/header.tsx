@@ -1,7 +1,7 @@
 'use client'
 
 import SearchBar from '@/components/common/search-bar'
-import { ThemeToggle } from '@/components/common/theme-handler'
+import { ThemeToggle } from '@/components/common/theme-toggle'
 import { Button } from '@/components/ui/button'
 import { useLinks } from '@/lib/hooks/useLinks.hook'
 import { cn } from '@/lib/utils'
@@ -14,11 +14,11 @@ export default function Header() {
 
   return (
     <>
-      <div className="flex w-full items-center justify-between gap-4 md:gap-6">
+      <header className="flex w-full items-center justify-between gap-4 md:gap-6">
         <div className="flex items-center gap-4">
           <div className="text-foreground flex items-center">
-            <Image alt="logo" src={logo} className="me-2 h-8 w-auto" />
-            <span className="first-letter:text-primary">GH</span>
+            <Image alt="logo" src={logo} className="me-1 h-11 w-auto" />
+            <span className="first-letter:text-primary text-xl font-semibold">GH</span>
           </div>
 
           <div className="flex items-center gap-3">
@@ -42,7 +42,7 @@ export default function Header() {
 
           <ThemeToggle />
         </div>
-      </div>
+      </header>
 
       <div className="sm:hidden">
         <SearchBar />

@@ -7,5 +7,5 @@ export const usePathHelper = () => {
 
   const doseIncludePath = (path: string) => pathname.includes(path)
 
-  return { isCurrentPath, doseIncludePath }
+  return { isCurrentPath, doseIncludePath, pathname }
 }

@@ -46,9 +46,52 @@ export function useLinks() {
       },
     ] as const
 
+    const panelItems = [
+      {
+        type: 'main',
+        name: t('home'),
+        icon: 'ph:lighthouse',
+        path: '/admin/dashboard',
+        breadcrumb: [],
+      },
+      {
+        type: 'main',
+        name: t('games'),
+        icon: 'ph:game-controller',
+        path: '/admin/dashboard/games',
+        breadcrumb: [
+          {
+            name: t('games'),
+            path: '/admin/dashboard/games',
+          },
+        ],
+      },
+      {
+        type: 'sub',
+        name: t('game-versions'),
+        path: '/admin/dashboard/games/game-versions',
+        breadcrumb: [
+          {
+            name: t('games'),
+            path: '/admin/dashboard/games',
+          },
+          {
+            name: t('game-versions'),
+            path: '/admin/dashboard/games/game-versions',
+          },
+        ],
+      },
+      // {
+      //   name: t('mods'),
+      //   icon: 'ph:puzzle-piece',
+      //   path: '/admin/dashboard/mods',
+      // },
+    ] as const
+
     return {
       mainItems,
       socialItems,
+      panelItems,
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale, isCurrentPath])
@@ -58,3 +101,4 @@ export function useLinks() {
 
 export type TMainLinkItem = ReturnType<typeof useLinks>['mainItems'][number]
 export type TSocialLinkItem = ReturnType<typeof useLinks>['socialItems'][number]
+export type TPanelLinkItem = ReturnType<typeof useLinks>['panelItems'][number]

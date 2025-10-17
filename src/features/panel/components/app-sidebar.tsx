@@ -1,0 +1,55 @@
+'use client'
+
+import { ThemeToggle } from '@/components/common/theme-toggle'
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarRail,
+} from '@/components/ui/sidebar'
+import { NavMain } from '@/features/panel/components/nav-main'
+import { NavUser } from '@/features/panel/components/nav-user'
+import logo from '@public/logo.svg'
+import Image from 'next/image'
+import Link from 'next/link'
+import * as React from 'react'
+
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  return (
+    <Sidebar collapsible="icon" {...props}>
+      <SidebarHeader>
+        <div className="flex items-center gap-2">
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:h-9">
+                <Link href="/" className="text-foreground flex items-center">
+                  <Image alt="logo" src={logo} className="h-7 w-auto" />
+
+                  <span className="first-letter:text-primary text-[15px] font-medium">
+                    GamerHaven
+                  </span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+
+          <ThemeToggle />
+        </div>
+      </SidebarHeader>
+
+      <SidebarContent>
+        <NavMain />
+      </SidebarContent>
+
+      <SidebarFooter>
+        <NavUser />
+      </SidebarFooter>
+
+      <SidebarRail />
+    </Sidebar>
+  )
+}

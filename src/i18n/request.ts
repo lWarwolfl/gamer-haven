@@ -4,7 +4,7 @@ import { cache } from 'react'
 const getRequestConfig = cache(async () => {
   const cookie = await cookies()
 
-  const locale = cookie.get('NEXT_LOCALE')?.value || process.env.DEFAULT_LANGUAGE
+  const locale = cookie.get('NEXT_LOCALE')?.value || process.env.DEFAULT_LANGUAGE || 'en'
 
   return {
     locale,

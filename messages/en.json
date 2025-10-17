@@ -1,11 +1,75 @@
 {
   "global": {
     "routes": {
+      "home": "Home",
       "games": "Games",
-      "mods": "Mods"
+      "mods": "Mods",
+      "game-versions": "Game versions",
+      "mod-versions": "Mod versions"
+    },
+    "zod-errors": {
+      "base": "Validation failed for this field",
+      "invalid-email": "Invalid email address.",
+      "password-least-lowercase": "Password must include at least one lowercase letter.",
+      "password-least-6": "Password must be at least 6 characters long.",
+      "password-match": "Passwords must match."
     }
   },
+  "responsive-dialog": { "cancel": "Cancel" },
   "header": { "search": "Search", "search-placeholder": "Your favourite mod..." },
   "footer": { "language": "Choose a language" },
-  "home": { "hello": "Hello World!" }
+  "home": { "hello": "Hello World!" },
+  "panel": {
+    "breadcrumb": { "base": "Admin Dashboard" },
+    "sidebar": {
+      "main-nav": {
+        "title": "Landing Data"
+      },
+      "user-nav": {
+        "logout": "Logout"
+      },
+      "logout": {
+        "title": "Logout",
+        "description": "You will go back to sign in page.",
+        "button": "Logout now"
+      }
+    },
+    "home": {
+      "title": "Gamer Haven Home",
+      "description": "You can modify landing data from here.",
+      "button": "Create Games"
+    }
+  },
+  "auth": {
+    "signin": {
+      "title": "Welcome back",
+      "welcome": "Welcome, dear admin!",
+      "description": "Sign in to your admin account.",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign in",
+      "subtitle": "Forgot your password?",
+      "subtitle-link": "Reset now"
+    },
+    "forgot": {
+      "title": "Forgot password",
+      "sent": "You have received a reset password link in your email.",
+      "description": "Send a reset password link to your email.",
+      "email": "Email",
+      "submit": "Send",
+      "back": "Go back",
+      "subtitle": "Wanna go back?",
+      "subtitle-link": "Sign in"
+    },
+    "reset": {
+      "title": "Forgot password",
+      "set": "Your new password was set successfully.",
+      "description": "Enter your new password here.",
+      "password": "New password",
+      "confirm-password": "Confirm password",
+      "submit": "Reset",
+      "subtitle": "Wanna go back?",
+      "subtitle-link": "Sign in"
+    }
+  }
 }

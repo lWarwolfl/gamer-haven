@@ -13,7 +13,7 @@ export default function Footer() {
   const { socialItems } = useLinks()
 
   return (
-    <div className="flex w-full flex-col items-center justify-between gap-4 sm:flex-row md:gap-6">
+    <footer className="flex w-full flex-col items-center justify-between gap-4 sm:flex-row md:gap-6">
       <div className="text-foreground flex items-center max-sm:order-1">
         <Image alt="logo" src={logo} className="me-2 h-8 w-auto" />
         <span className="first-letter:text-primary">GamerHaven</span>
@@ -39,6 +39,6 @@ export default function Footer() {
           ))}
         </TooltipProvider>
       </div>
-    </div>
+    </footer>
   )
 }

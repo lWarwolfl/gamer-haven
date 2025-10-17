@@ -10,3 +10,7 @@ export const getErrorMessage = (error: any) => {
   if ('message' in error) return error.message
   return String(error)
 }
+
+export function getUsername(email: string | null | undefined) {
+  return email ? email.split('@')[0] : ''
+}

@@ -8,11 +8,14 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { locales, useLocaleWithProps } from '@/i18n/i18n-configs'
+import { cn } from '@/lib/utils'
 import { setUserLocale } from '@/server/locale'
 import { useTranslations } from 'next-intl'
 import { useTransition } from 'react'
 
-export default function LanguageSelector() {
+export type LanguageSelectorProps = React.ComponentProps<typeof SelectTrigger>
+
+export default function LanguageSelector({ className, ...props }: LanguageSelectorProps) {
   const { locale } = useLocaleWithProps()
   const t = useTranslations('footer')
 
@@ -26,7 +29,7 @@ export default function LanguageSelector() {
 
   return (
     <Select disabled={isPending} onValueChange={handleOnChange} defaultValue={locale}>
-      <SelectTrigger className="w-30">
+      <SelectTrigger className={cn('w-30', className)} {...props}>
         <SelectValue placeholder={t('language')} />
       </SelectTrigger>
 
