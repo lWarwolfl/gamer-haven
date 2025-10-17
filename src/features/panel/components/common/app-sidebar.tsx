@@ -11,8 +11,8 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from '@/components/ui/sidebar'
-import { NavMain } from '@/features/panel/components/nav-main'
-import { NavUser } from '@/features/panel/components/nav-user'
+import { NavMain } from '@/features/panel/components/common/nav-main'
+import { NavUser } from '@/features/panel/components/common/nav-user'
 import logo from '@public/logo.svg'
 import Image from 'next/image'
 import Link from 'next/link'

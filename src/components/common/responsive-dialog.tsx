@@ -31,6 +31,8 @@ export type ResponsiveDialogProps = React.PropsWithChildren & {
   action: React.ReactNode
   title: string
   description: string
+  open: boolean
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export function ResponsiveDialog({
@@ -39,10 +41,11 @@ export function ResponsiveDialog({
   action,
   title,
   description,
+  open,
+  setOpen,
 }: ResponsiveDialogProps) {
   const t = useTranslations('responsive-dialog')
 
-  const [open, setOpen] = React.useState(false)
   const isDesktop = useMediaQuery('(min-width: 768px)')
 
   if (isDesktop) {

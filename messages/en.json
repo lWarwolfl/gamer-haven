@@ -1,5 +1,13 @@
 {
   "global": {
+    "actions": {
+      "cancel": "Cancel",
+      "submit": "Submit",
+      "delete": "Delete",
+      "save": "Save",
+      "create": "Create",
+      "update": "Update"
+    },
     "routes": {
       "home": "Home",
       "games": "Games",
@@ -12,7 +20,11 @@
       "invalid-email": "Invalid email address.",
       "password-least-lowercase": "Password must include at least one lowercase letter.",
       "password-least-6": "Password must be at least 6 characters long.",
-      "password-match": "Passwords must match."
+      "password-match": "Passwords must match.",
+      "empty": "A file must be provided.",
+      "image-only": "Image only files",
+      "logo-100": "Logo must be ≤ 100KB",
+      "image-200": "Image must be ≤ 200KB"
     }
   },
   "responsive-dialog": { "cancel": "Cancel" },
@@ -38,6 +50,52 @@
       "title": "Gamer Haven Home",
       "description": "You can modify landing data from here.",
       "button": "Create Games"
+    },
+    "games": {
+      "page": { "title": "Games List" },
+      "table": {
+        "title": "Title",
+        "mod": "Mod count",
+        "version": "Current version",
+        "actions": "Actions"
+      },
+      "create": {
+        "title": "Create a new game",
+        "description": "Define the game and add detail.",
+        "title-label": "Title",
+        "title-placeholder": "Minecraft",
+        "description-label": "Description",
+        "description-placeholder": "Game summary",
+        "slug-label": "Slug",
+        "slug-placeholder": "Path",
+        "images-label": "Slider images",
+        "images-placeholder": "Url",
+        "logo-label": "Logo",
+        "add": "Add image",
+        "delete": "Delete",
+        "success": "{name} game was created!"
+      },
+      "update": {
+        "title": "Update {name} game",
+        "description": "Modify the game and add detail.",
+        "title-label": "Title",
+        "title-placeholder": "Minecraft",
+        "description-label": "Description",
+        "description-placeholder": "Game summary",
+        "slug-label": "Slug",
+        "slug-placeholder": "Path",
+        "images-label": "Slider images",
+        "images-placeholder": "Url",
+        "logo-label": "Logo",
+        "add": "Add image",
+        "delete": "Delete",
+        "success": "{name} game was saved!"
+      },
+      "delete": {
+        "title": "Delete {name} game",
+        "description": "Are you sure?",
+        "success": "{name} game was deleted."
+      }
     }
   },
   "auth": {

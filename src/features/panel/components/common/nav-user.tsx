@@ -19,7 +19,7 @@ import {
   useSidebar,
 } from '@/components/ui/sidebar'
 import { authHooks } from '@/features/auth/hooks/auth.hook'
-import Logout from '@/features/panel/components/logout'
+import Logout from '@/features/panel/components/common/logout'
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 

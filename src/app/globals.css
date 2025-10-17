@@ -132,6 +132,6 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-muted hover:bg-border;
+    @apply bg-primary;
   }
 }

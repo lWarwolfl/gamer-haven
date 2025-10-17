@@ -5,10 +5,11 @@ import { SubmitButton } from '@/components/common/submit-button'
 import { authHooks } from '@/features/auth/hooks/auth.hook'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
-import { PropsWithChildren } from 'react'
+import { PropsWithChildren, useState } from 'react'
 
 export default function Logout({ children }: PropsWithChildren) {
   const t = useTranslations('panel.sidebar.logout')
+  const [open, setOpen] = useState(false)
 
   const router = useRouter()
   const { signOut, isPending: isSignoutPending } = authHooks.useSignOut()
@@ -31,6 +32,8 @@ export default function Logout({ children }: PropsWithChildren) {
           {t('button')}
         </SubmitButton>
       }
+      open={open}
+      setOpen={setOpen}
     />
   )
 }

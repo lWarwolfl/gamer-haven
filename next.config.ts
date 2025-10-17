@@ -3,7 +3,9 @@ import type { NextConfig } from 'next'
 import createNextIntlPlugin from 'next-intl/plugin'
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [new URL('https://cv3kagunkjo5ft8f.public.blob.vercel-storage.com/**')],
+  },
 }
 
 const withNextIntl = createNextIntlPlugin()

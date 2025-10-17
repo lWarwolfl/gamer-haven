@@ -14,3 +14,9 @@ export const getErrorMessage = (error: any) => {
 export function getUsername(email: string | null | undefined) {
   return email ? email.split('@')[0] : ''
 }
+
+export function getFileExtension(blob: Blob): string {
+  const mimeType = blob.type
+  const extension = mimeType.split('/')[1]
+  return extension || 'png'
+}
