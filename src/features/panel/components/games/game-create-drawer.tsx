@@ -76,7 +76,7 @@ export default function GameCreateDrawer() {
         </DrawerHeader>
 
         <form
-          id="signin-form"
+          id="game-create-form"
           onSubmit={form.handleSubmit(onSubmit)}
           className="mx-auto w-full max-w-3xl overflow-x-visible"
         >

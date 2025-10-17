@@ -39,7 +39,7 @@ export default function GameTable() {
     {
       accessorKey: 'mod',
       header: () => t('mod'),
-      cell: ({ row }) => row.original.mods.length,
+      cell: ({ row }) => <Badge variant="secondary">{row.original.mods.length}</Badge>,
     },
     {
       accessorKey: 'version',

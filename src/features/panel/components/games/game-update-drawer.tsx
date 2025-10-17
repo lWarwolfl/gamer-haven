@@ -72,7 +72,7 @@ export default function GameUpdateDrawer({ data }: GameUpdateDrawerProps) {
     <Drawer open={open} onOpenChange={(open) => setOpen(open)}>
       <DrawerTrigger asChild>
         <Button size="sm" variant="secondary">
-          {tActions('update')} <Icon icon="ph:pencil" className="size-4.5" />
+          {tActions('update')} <Icon icon="ph:pencil-simple" className="size-4" />
         </Button>
       </DrawerTrigger>
 
@@ -83,7 +83,7 @@ export default function GameUpdateDrawer({ data }: GameUpdateDrawerProps) {
         </DrawerHeader>
 
         <form
-          id="signin-form"
+          id="game-update-form"
           onSubmit={form.handleSubmit(onSubmit)}
           className="mx-auto w-full max-w-3xl overflow-x-visible"
         >

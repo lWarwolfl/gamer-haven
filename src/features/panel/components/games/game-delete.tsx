@@ -7,7 +7,6 @@ import { useDeleteGame } from '@/features/panel/mutations/useDeleteGame.mutation
 import { TListGamesAction } from '@/server/game/listGames.action'
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { toast } from 'sonner'
 
@@ -19,7 +18,6 @@ export default function GameDelete({ data }: GameDeleteProps) {
 
   const [open, setOpen] = useState(false)
 
-  const router = useRouter()
   const { mutate: mutateDeleteGame, isPending: isPendingDeleteGame } = useDeleteGame()
 
   function onSubmit() {
@@ -36,7 +34,7 @@ export default function GameDelete({ data }: GameDeleteProps) {
       description={t('description')}
       trigger={
         <Button variant="secondary" size="sm">
-          {tActions('delete')} <Icon icon="ph:trash" className="text-destructive size-4.5" />
+          {tActions('delete')} <Icon icon="ph:trash" className="text-destructive size-4" />
         </Button>
       }
       action={
