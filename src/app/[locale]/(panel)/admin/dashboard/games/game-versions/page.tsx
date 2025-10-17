@@ -1,4 +1,4 @@
-import GamesPageClient from '@/app/[locale]/(panel)/admin/dashboard/games/page.client'
+import GameVersionsPageClient from './page.client'
 
 export type DashboardPageProps = {
   searchParams: Promise<{ gameId: string | undefined }>
@@ -12,7 +12,7 @@ export default async function GamesPage({ searchParams }: DashboardPageProps) {
       <div className="grid auto-rows-min gap-4 md:grid-cols-3">
         <div className="bg-muted/50 aspect-video rounded-xl">{gameId}</div>
 
-        <GamesPageClient />
+        <GameVersionsPageClient />
 
         <div className="bg-muted/50 aspect-video rounded-xl" />
       </div>
