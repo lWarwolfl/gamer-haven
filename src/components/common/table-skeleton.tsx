@@ -16,14 +16,14 @@ interface TableSkeletonProps {
 
 export function TableSkeleton({ rows = 8, columns = 4, showHeader = true }: TableSkeletonProps) {
   return (
-    <div className="w-full rounded-md border">
+    <div className="w-full overflow-hidden rounded-md border">
       <Table>
         {showHeader && (
           <TableHeader>
             <TableRow className="hover:bg-transparent">
               {Array.from({ length: columns }).map((_, index) => (
                 <TableHead key={index}>
-                  <Skeleton className="h-4 w-[80%]" />
+                  <Skeleton className="bg-background/80 h-4 w-2/5" />
                 </TableHead>
               ))}
             </TableRow>

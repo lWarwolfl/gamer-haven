@@ -20,6 +20,7 @@ import {
 } from '@/components/ui/sidebar'
 import { authHooks } from '@/features/auth/hooks/auth.hook'
 import Logout from '@/features/panel/components/common/logout'
+import { cn } from '@/lib/utils'
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 
@@ -79,10 +80,11 @@ export function NavUser() {
 
 NavUser.Identity = function Identity() {
   const user = authHooks.useCurrentUser()
+  const { state } = useSidebar()
 
   return (
     <>
-      <Avatar className="size-9 rounded-lg">
+      <Avatar className={cn('size-9 rounded-lg', { 'size-8': state === 'collapsed' })}>
         <AvatarFallback className="rounded-lg">A</AvatarFallback>
       </Avatar>
 

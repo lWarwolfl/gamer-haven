@@ -20,7 +20,7 @@ export function NavMain() {
   const { doseIncludePath, isCurrentPath } = usePathHelper()
 
   return (
-    <SidebarGroup className="group-data-[collapsible=icon]:hidden">
+    <SidebarGroup>
       <SidebarGroupLabel>{t('title')}</SidebarGroupLabel>
 
       <SidebarMenu>
@@ -29,15 +29,12 @@ export function NavMain() {
           .map((item) => (
             <SidebarMenuItem key={item.name}>
               <SidebarMenuButton
+                tooltip={item.name}
                 className={cn({ 'pointer-events-none': isCurrentPath(item.path) })}
-                variant={
+                isActive={
                   item.path === '/admin/dashboard'
                     ? isCurrentPath(item.path)
-                      ? 'outline'
-                      : 'default'
                     : doseIncludePath(item.path)
-                      ? 'outline'
-                      : 'default'
                 }
                 asChild
               >

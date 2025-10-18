@@ -35,7 +35,7 @@
     "breadcrumb": { "base": "Admin Dashboard" },
     "sidebar": {
       "main-nav": {
-        "title": "Landing Data"
+        "title": "Data"
       },
       "user-nav": {
         "logout": "Logout"

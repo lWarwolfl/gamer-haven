@@ -10,6 +10,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
+  useSidebar,
 } from '@/components/ui/sidebar'
 import { NavMain } from '@/features/panel/components/common/nav-main'
 import { NavUser } from '@/features/panel/components/common/nav-user'
@@ -19,6 +20,8 @@ import Link from 'next/link'
 import * as React from 'react'
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { state, isMobile } = useSidebar()
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -37,9 +40,17 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             </SidebarMenuItem>
           </SidebarMenu>
 
-          <ThemeToggle />
+          {state === 'expanded' || isMobile ? <ThemeToggle /> : null}
         </div>
       </SidebarHeader>
+
+      {state === 'collapsed' && !isMobile ? (
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <ThemeToggle size="icon-sm" variant="ghost" className="mx-2 [&>svg]:size-4!" />
+          </SidebarMenuItem>
+        </SidebarMenu>
+      ) : null}
 
       <SidebarContent>
         <NavMain />

@@ -38,6 +38,7 @@ export default function GameUpdateDrawer({ data }: GameUpdateDrawerProps) {
     mode: 'onSubmit',
     resolver: zodResolver(gameUpdateSchema),
     defaultValues: {
+      id: data.id,
       title: data.title,
       description: data.description,
       slug: data.slug,

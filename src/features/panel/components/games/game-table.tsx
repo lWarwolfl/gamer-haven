@@ -22,7 +22,7 @@ export default function GameTable() {
       header: () => t('title'),
       cell: ({ row }) => {
         return (
-          <div className="flex items-center gap-2">
+          <div className="flex shrink-0 items-center gap-2 min-w-40">
             <Image
               alt={row.original.title}
               width={50}
@@ -31,7 +31,7 @@ export default function GameTable() {
               src={row.original.logo}
             />
 
-            {row.original.title}
+            <span className="max-w-5/6 truncate">{row.original.title}</span>
           </div>
         )
       },
