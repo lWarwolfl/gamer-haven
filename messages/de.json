@@ -1,18 +1,133 @@
 {
   "global": {
+    "actions": {
+      "cancel": "Abbrechen",
+      "submit": "Senden",
+      "delete": "Löschen",
+      "save": "Speichern",
+      "create": "Erstellen",
+      "update": "Aktualisieren"
+    },
     "routes": {
+      "home": "Startseite",
       "games": "Spiele",
-      "mods": "Mods"
+      "mods": "Mods",
+      "game-versions": "Spielversionen",
+      "mod-versions": "Mod-Versionen"
+    },
+    "zod-errors": {
+      "base": "Die Validierung für dieses Feld ist fehlgeschlagen.",
+      "invalid-email": "Ungültige E-Mail-Adresse.",
+      "password-least-lowercase": "Das Passwort muss mindestens einen Kleinbuchstaben enthalten.",
+      "password-least-6": "Das Passwort muss mindestens 6 Zeichen lang sein.",
+      "password-match": "Passwörter müssen übereinstimmen.",
+      "empty": "Es muss eine Datei bereitgestellt werden.",
+      "image-only": "Nur Bilddateien.",
+      "logo-100": "Das Logo muss ≤ 100 KB groß sein.",
+      "image-200": "Das Bild muss ≤ 200 KB groß sein."
     }
   },
-  "header": {
-    "search": "Suche",
-    "search-placeholder": "Deine Lieblingsmod..."
+  "responsive-dialog": { "cancel": "Abbrechen" },
+  "header": { "search": "Suche", "search-placeholder": "Dein Lieblings-Mod..." },
+  "footer": { "language": "Sprache auswählen" },
+  "home": { "hello": "Hallo Welt!" },
+  "panel": {
+    "breadcrumb": { "base": "Admin-Dashboard" },
+    "sidebar": {
+      "main-nav": {
+        "title": "Daten"
+      },
+      "user-nav": {
+        "logout": "Abmelden"
+      },
+      "logout": {
+        "title": "Abmelden",
+        "description": "Du wirst zur Anmeldeseite zurückgeleitet.",
+        "button": "Jetzt abmelden"
+      }
+    },
+    "home": {
+      "title": "Gamer Haven Startseite",
+      "description": "Hier kannst du die Landing-Daten bearbeiten.",
+      "button": "Spiele erstellen"
+    },
+    "games": {
+      "page": { "title": "Spieleliste" },
+      "table": {
+        "title": "Titel",
+        "mod": "Anzahl Mods",
+        "version": "Aktuelle Version",
+        "actions": "Aktionen"
+      },
+      "create": {
+        "title": "Neues Spiel erstellen",
+        "description": "Spiel definieren und Details hinzufügen.",
+        "title-label": "Titel",
+        "title-placeholder": "Minecraft",
+        "description-label": "Beschreibung",
+        "description-placeholder": "Spielzusammenfassung",
+        "slug-label": "Slug",
+        "slug-placeholder": "Pfad",
+        "images-label": "Slider-Bilder",
+        "images-placeholder": "URL",
+        "logo-label": "Logo",
+        "add": "Bild hinzufügen",
+        "delete": "Löschen",
+        "success": "Das Spiel {name} wurde erstellt!"
+      },
+      "update": {
+        "title": "Spiel {name} aktualisieren",
+        "description": "Spiel bearbeiten und Details hinzufügen.",
+        "title-label": "Titel",
+        "title-placeholder": "Minecraft",
+        "description-label": "Beschreibung",
+        "description-placeholder": "Spielzusammenfassung",
+        "slug-label": "Slug",
+        "slug-placeholder": "Pfad",
+        "images-label": "Slider-Bilder",
+        "images-placeholder": "URL",
+        "logo-label": "Logo",
+        "add": "Bild hinzufügen",
+        "delete": "Löschen",
+        "success": "Das Spiel {name} wurde gespeichert!"
+      },
+      "delete": {
+        "title": "Spiel {name} löschen",
+        "description": "Bist du sicher?",
+        "success": "Das Spiel {name} wurde gelöscht."
+      }
+    }
   },
-  "footer": {
-    "language": "Wählen Sie eine Sprache"
-  },
-  "home": {
-    "hello": "Hallo Welt!"
+  "auth": {
+    "signin": {
+      "title": "Willkommen zurück",
+      "welcome": "Willkommen, lieber Admin!",
+      "description": "Melde dich in deinem Admin-Konto an.",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "submit": "Anmelden",
+      "subtitle": "Passwort vergessen?",
+      "subtitle-link": "Jetzt zurücksetzen"
+    },
+    "forgot": {
+      "title": "Passwort vergessen",
+      "sent": "Du hast einen Link zum Zurücksetzen des Passworts per E-Mail erhalten.",
+      "description": "Sende einen Link zum Zurücksetzen an deine E-Mail-Adresse.",
+      "email": "E-Mail",
+      "submit": "Senden",
+      "back": "Zurück",
+      "subtitle": "Möchtest du zurück?",
+      "subtitle-link": "Anmelden"
+    },
+    "reset": {
+      "title": "Passwort zurücksetzen",
+      "set": "Dein neues Passwort wurde erfolgreich festgelegt.",
+      "description": "Gib hier dein neues Passwort ein.",
+      "password": "Neues Passwort",
+      "confirm-password": "Passwort bestätigen",
+      "submit": "Zurücksetzen",
+      "subtitle": "Möchtest du zurück?",
+      "subtitle-link": "Anmelden"
+    }
   }
 }
