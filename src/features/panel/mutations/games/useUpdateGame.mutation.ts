@@ -9,7 +9,7 @@ export function useUpdateGame() {
   return useMutation({
     mutationFn: (game: GameUpdateSchemaProps) => updateGameAction(game),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GAMES] })
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GAMES, 1] })
     },
   })
 }

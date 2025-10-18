@@ -9,7 +9,7 @@ export function useCreateGame() {
   return useMutation({
     mutationFn: (data: GameCreateSchemaProps) => createGameAction(data),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GAMES] })
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GAMES, 1] })
     },
   })
 }

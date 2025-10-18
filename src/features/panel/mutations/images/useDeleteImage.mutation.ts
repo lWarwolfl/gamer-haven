@@ -8,7 +8,7 @@ export function useDeleteImage() {
   return useMutation({
     mutationFn: (id: string) => deleteImageAction(id),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.IMAGES] })
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.IMAGES, 1] })
     },
   })
 }

@@ -8,7 +8,7 @@ export function useDeleteGame() {
   return useMutation({
     mutationFn: (id: string) => deleteGameAction(id),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GAMES] })
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GAMES, 1] })
     },
   })
 }
