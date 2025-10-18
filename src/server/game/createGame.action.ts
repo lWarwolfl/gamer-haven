@@ -13,14 +13,13 @@ export async function createGameAction(data: GameCreateSchemaProps) {
     redirect('/admin/signin')
   }
 
+  const { images, ...rest } = data
+
   return await db
     .insert(Game)
     .values({
-      title: data.title,
-      description: data.description,
-      slug: data.slug,
-      logo: data.logo,
-      images: data.images ? data.images.map((item) => item.url) : undefined,
+      ...rest,
+      images: images ? images.map((item) => item.url) : undefined,
     })
     .returning()
 }

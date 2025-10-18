@@ -14,20 +14,13 @@ export async function updateGameAction(data: GameUpdateSchemaProps) {
     redirect('/admin/signin')
   }
 
-  const previousGame = await db.query.Game.findFirst({ where: (t, { eq }) => eq(t.id, data.id) })
-
-  if (!previousGame) {
-    return
-  }
+  const { images, ...rest } = data
 
   return await db
     .update(Game)
     .set({
-      title: data.title,
-      description: data.description,
-      slug: data.slug,
-      logo: data.logo,
-      images: data.images ? data.images.map((item) => item.url) : undefined,
+      ...rest,
+      images: images ? images.map((item) => item.url) : undefined,
     })
     .where(eq(Game.id, data.id))
     .returning()

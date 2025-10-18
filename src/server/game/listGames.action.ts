@@ -15,7 +15,7 @@ export async function listGamesAction({ limit = 10, page = 1 }: PaginationSchema
     with: {
       mods: { columns: { id: true } },
       gameVersions: {
-        orderBy: (gv, { desc }) => [desc(gv.updatedAt)],
+        orderBy: (gv, { desc }) => [desc(gv.createdAt)],
         limit: 1,
       },
     },

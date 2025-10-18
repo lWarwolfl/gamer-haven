@@ -92,7 +92,9 @@
         "version": "Current version",
         "created-at": "Created at",
         "updated-at": "Updated at",
-        "actions": "Actions"
+        "actions": "Actions",
+        "versions": "Versions",
+        "mods": "Mods"
       },
       "create": {
         "title": "Create a new game",
@@ -112,7 +114,7 @@
       },
       "update": {
         "title": "Update {name} game",
-        "description": "Modify the game and add detail.",
+        "description": "Define the game and add detail.",
         "title-label": "Title",
         "title-placeholder": "Minecraft",
         "description-label": "Description",
@@ -130,6 +132,32 @@
         "title": "Delete {name} game",
         "description": "Are you sure?",
         "success": "{name} game was deleted."
+      }
+    },
+    "game-versions": {
+      "page": { "title": "{name} Game Versions List" },
+      "table": {
+        "version": "Version",
+        "game": "Game",
+        "created-at": "Created at",
+        "actions": "Actions"
+      },
+      "create": {
+        "title": "Create a new game version",
+        "description": "Version numbers should always go higher in order of creation.",
+        "version-label": "Version",
+        "success": "{name} game version was created!"
+      },
+      "update": {
+        "title": "Update {name} game version",
+        "description": "Version numbers should always go higher in order of creation.",
+        "version-label": "Version",
+        "success": "{name} game version was saved!"
+      },
+      "delete": {
+        "title": "Delete {name} game version",
+        "description": "Are you sure?",
+        "success": "{name} game version was deleted."
       }
     }
   },

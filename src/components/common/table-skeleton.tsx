@@ -14,7 +14,7 @@ interface TableSkeletonProps {
   showHeader?: boolean
 }
 
-export function TableSkeleton({ rows = 8, columns = 4, showHeader = true }: TableSkeletonProps) {
+export function TableSkeleton({ rows = 10, columns = 4, showHeader = true }: TableSkeletonProps) {
   return (
     <div className="w-full overflow-hidden rounded-md border">
       <Table>

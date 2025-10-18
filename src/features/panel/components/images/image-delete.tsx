@@ -33,9 +33,9 @@ export default function ImageDelete({ data }: ImageDeleteProps) {
       title={t('title', { name: data.name })}
       description={t('description')}
       trigger={
-        <Button variant="outline" size="sm">
+        <Button variant="destructive" size="sm">
           {tActions('delete')}
-          <Icon icon="ph:trash-duotone" className="text-destructive size-4" />
+          <Icon icon="ph:trash-duotone" className="size-4" />
         </Button>
       }
       action={

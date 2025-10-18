@@ -3,15 +3,18 @@
 import { DataPagination } from '@/components/common/data-pagination'
 import { TableSkeleton } from '@/components/common/table-skeleton'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import { DataTable } from '@/components/ui/data-table'
 import GameDelete from '@/features/panel/components/games/game-delete'
 import GameUpdateDrawer from '@/features/panel/components/games/game-update-drawer'
 import { useListGames } from '@/features/panel/queries/games/useListGames.query'
 import { TListGamesAction } from '@/server/game/listGames.action'
+import { Icon } from '@iconify/react'
 import { ColumnDef } from '@tanstack/react-table'
 import { format } from 'date-fns'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
 
 export default function GameTable() {
@@ -80,6 +83,26 @@ export default function GameTable() {
       cell: ({ row }) => {
         return (
           <div className="flex items-center gap-3">
+            <Button size="sm" variant="outline" asChild>
+              <Link
+                href={`/admin/dashboard/games/game-versions?gameId=${row.original.id}&game=${row.original.title}`}
+              >
+                {t('versions')}
+
+                <Icon icon="ph:package" />
+              </Link>
+            </Button>
+
+            <Button size="sm" variant="outline" asChild>
+              <Link
+                href={`/admin/dashboard/games/mods?gameId=${row.original.id}&game=${row.original.title}`}
+              >
+                {t('mods')}
+
+                <Icon icon="ph:puzzle-piece" />
+              </Link>
+            </Button>
+
             <GameUpdateDrawer data={row.original} />
 
             <GameDelete data={row.original} />
@@ -90,7 +113,7 @@ export default function GameTable() {
   ]
 
   return isFetching ? (
-    <TableSkeleton />
+    <TableSkeleton columns={6} />
   ) : (
     <>
       <DataTable data={data ? data.games : []} columns={columns} />

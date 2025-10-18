@@ -97,7 +97,7 @@ export default function ImageTable() {
   ]
 
   return isFetching ? (
-    <TableSkeleton />
+    <TableSkeleton columns={6} />
   ) : (
     <>
       <DataTable data={data ? data.images : []} columns={columns} />

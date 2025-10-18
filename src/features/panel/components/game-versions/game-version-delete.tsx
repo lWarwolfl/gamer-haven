@@ -3,34 +3,37 @@
 import { ResponsiveDialog } from '@/components/common/responsive-dialog'
 import { SubmitButton } from '@/components/common/submit-button'
 import { Button } from '@/components/ui/button'
-import { useDeleteGame } from '@/features/panel/mutations/games/useDeleteGame.mutation'
-import { TListGamesAction } from '@/server/game/listGames.action'
+import { useDeleteGameVersion } from '@/features/panel/mutations/game-versions/useDeleteGameVersion.mutation'
+import { TListGameVersionsByGameIdAction } from '@/server/game-version/listGameVersionsByGameId.action'
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { toast } from 'sonner'
 
-export type GameDeleteProps = { data: TListGamesAction['games'][number] }
+export type GameVersionDeleteProps = {
+  data: TListGameVersionsByGameIdAction['gameVersions'][number]
+}
 
-export default function GameDelete({ data }: GameDeleteProps) {
+export default function GameVersionDelete({ data }: GameVersionDeleteProps) {
   const tActions = useTranslations('global.actions')
-  const t = useTranslations('panel.games.delete')
+  const t = useTranslations('panel.game-versions.delete')
 
   const [open, setOpen] = useState(false)
 
-  const { mutate: mutateDeleteGame, isPending: isPendingDeleteGame } = useDeleteGame()
+  const { mutate: mutateDeleteGameVersion, isPending: isPendingDeleteGameVersion } =
+    useDeleteGameVersion()
 
   function onSubmit() {
-    mutateDeleteGame(data.id, {
+    mutateDeleteGameVersion(data.id, {
       onSuccess: () => {
-        toast.success(t('success', { name: data.title }))
+        toast.success(t('success', { name: data.version }))
       },
     })
   }
 
   return (
     <ResponsiveDialog
-      title={t('title', { name: data.title })}
+      title={t('title', { name: data.version })}
       description={t('description')}
       trigger={
         <Button variant="destructive" size="sm">
@@ -41,7 +44,7 @@ export default function GameDelete({ data }: GameDeleteProps) {
       action={
         <SubmitButton
           onClick={() => onSubmit()}
-          loading={isPendingDeleteGame}
+          loading={isPendingDeleteGameVersion}
           variant="destructive"
         >
           {tActions('delete')}
