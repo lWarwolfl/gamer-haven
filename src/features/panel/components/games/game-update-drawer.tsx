@@ -26,7 +26,7 @@ import { useState } from 'react'
 import { Controller, useFieldArray, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
-export type GameUpdateDrawerProps = { data: TListGamesAction[number] }
+export type GameUpdateDrawerProps = { data: TListGamesAction['games'][number] }
 
 export default function GameUpdateDrawer({ data }: GameUpdateDrawerProps) {
   const tActions = useTranslations('global.actions')

@@ -9,7 +9,7 @@ export function useCreateImage() {
   return useMutation({
     mutationFn: (data: ImageCreateSchemaProps) => createImageAction(data),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.IMAGES, 1] })
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.IMAGES] })
     },
   })
 }
