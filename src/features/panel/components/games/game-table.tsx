@@ -1,28 +1,36 @@
 'use client'
 
+import { DataPagination } from '@/components/common/data-pagination'
 import { TableSkeleton } from '@/components/common/table-skeleton'
 import { Badge } from '@/components/ui/badge'
 import { DataTable } from '@/components/ui/data-table'
 import GameDelete from '@/features/panel/components/games/game-delete'
 import GameUpdateDrawer from '@/features/panel/components/games/game-update-drawer'
-import { useListGames } from '@/features/panel/queries/useListGames.query'
+import { useListGames } from '@/features/panel/queries/games/useListGames.query'
 import { TListGamesAction } from '@/server/game/listGames.action'
 import { ColumnDef } from '@tanstack/react-table'
+import { format } from 'date-fns'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
+import { useState } from 'react'
 
 export default function GameTable() {
   const t = useTranslations('panel.games.table')
 
-  const { data, isLoading } = useListGames()
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const { data, isFetching } = useListGames({ page: currentPage })
 
-  const columns: ColumnDef<TListGamesAction[number]>[] = [
+  function onPageChange(page: number) {
+    setCurrentPage(page)
+  }
+
+  const columns: ColumnDef<TListGamesAction['games'][number]>[] = [
     {
       accessorKey: 'title',
       header: () => t('title'),
       cell: ({ row }) => {
         return (
-          <div className="flex shrink-0 items-center gap-2 min-w-40">
+          <div className="flex w-40 shrink-0 items-center gap-2">
             <Image
               alt={row.original.title}
               width={50}
@@ -53,6 +61,20 @@ export default function GameTable() {
       },
     },
     {
+      accessorKey: 'createdAt',
+      header: () => t('created-at'),
+      cell: ({ row }) => {
+        return format(row.original.createdAt, 'dd MMM, yyyy')
+      },
+    },
+    {
+      accessorKey: 'updatedAt',
+      header: () => t('updated-at'),
+      cell: ({ row }) => {
+        return format(row.original.updatedAt, 'dd MMM, yyyy')
+      },
+    },
+    {
       accessorKey: 'actions',
       header: () => t('actions'),
       cell: ({ row }) => {
@@ -67,5 +89,15 @@ export default function GameTable() {
     },
   ]
 
-  return isLoading ? <TableSkeleton /> : <DataTable data={data ? data : []} columns={columns} />
+  return isFetching ? (
+    <TableSkeleton />
+  ) : (
+    <>
+      <DataTable data={data ? data.games : []} columns={columns} />
+
+      {data?.pagination && data.pagination.totalPages > 1 ? (
+        <DataPagination pagination={data.pagination} onPageChange={onPageChange} />
+      ) : null}
+    </>
+  )
 }

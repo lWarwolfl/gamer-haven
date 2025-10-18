@@ -16,7 +16,7 @@ import { Field, FieldError, FieldGroup, FieldLabel } from '@/components/ui/field
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
-import { useUpdateGame } from '@/features/panel/mutations/useUpdateGame.mutation'
+import { useUpdateGame } from '@/features/panel/mutations/games/useUpdateGame.mutation'
 import { gameUpdateSchema, GameUpdateSchemaProps } from '@/features/panel/schemas/game.schema'
 import { TListGamesAction } from '@/server/game/listGames.action'
 import { zodResolver } from '@hookform/resolvers/zod'

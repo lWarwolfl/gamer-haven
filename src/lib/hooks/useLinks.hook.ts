@@ -67,6 +67,18 @@ export function useLinks() {
         ],
       },
       {
+        type: 'main',
+        name: t('images'),
+        icon: 'ph:image',
+        path: '/admin/dashboard/images',
+        breadcrumb: [
+          {
+            name: t('images'),
+            path: '/admin/dashboard/images',
+          },
+        ],
+      },
+      {
         type: 'sub',
         name: t('game-versions'),
         path: '/admin/dashboard/games/game-versions',

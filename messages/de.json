@@ -1,19 +1,25 @@
 {
   "global": {
+    "toast": {
+      "copied": "Erfolgreich in die Zwischenablage kopiert!"
+    },
     "actions": {
       "cancel": "Abbrechen",
       "submit": "Senden",
       "delete": "Löschen",
       "save": "Speichern",
       "create": "Erstellen",
-      "update": "Aktualisieren"
+      "update": "Aktualisieren",
+      "next": "Weiter",
+      "previous": "Zurück"
     },
     "routes": {
       "home": "Startseite",
       "games": "Spiele",
       "mods": "Mods",
       "game-versions": "Spielversionen",
-      "mod-versions": "Mod-Versionen"
+      "mod-versions": "Mod-Versionen",
+      "images": "Bilder"
     },
     "zod-errors": {
       "base": "Die Validierung für dieses Feld ist fehlgeschlagen.",
@@ -21,10 +27,12 @@
       "password-least-lowercase": "Das Passwort muss mindestens einen Kleinbuchstaben enthalten.",
       "password-least-6": "Das Passwort muss mindestens 6 Zeichen lang sein.",
       "password-match": "Passwörter müssen übereinstimmen.",
+      "required": "Dieses Feld ist erforderlich.",
       "empty": "Es muss eine Datei bereitgestellt werden.",
       "image-only": "Nur Bilddateien.",
-      "logo-100": "Das Logo muss ≤ 100 KB groß sein.",
-      "image-200": "Das Bild muss ≤ 200 KB groß sein."
+      "image-100": "Das Bild muss ≤ 100 KB groß sein.",
+      "image-200": "Das Bild muss ≤ 200 KB groß sein.",
+      "url": "Die URL muss aus dem Blob-Speicher stammen."
     }
   },
   "responsive-dialog": { "cancel": "Abbrechen" },
@@ -51,12 +59,39 @@
       "description": "Hier kannst du die Landing-Daten bearbeiten.",
       "button": "Spiele erstellen"
     },
+    "images": {
+      "page": { "title": "Bilderliste" },
+      "table": {
+        "name": "Name",
+        "type": "Dateityp",
+        "size": "Dateigröße",
+        "url": "URL",
+        "created-at": "Erstellt am",
+        "actions": "Aktionen",
+        "copy": "Kopieren"
+      },
+      "create": {
+        "title": "Neues Bild hochladen",
+        "description": "Deine Datei sollte eine PNG, JPG, JPEG oder WEBP ≤ 200 KB sein.",
+        "image-label": "Bild",
+        "name-label": "Name",
+        "name-placeholder": "Dateiname",
+        "success": "{name} wurde hochgeladen!"
+      },
+      "delete": {
+        "title": "Datei {name} löschen",
+        "description": "Bist du sicher? Alle Elemente, die diese Datei-URL verwenden, werden nicht verfügbar sein!",
+        "success": "Datei {name} wurde gelöscht."
+      }
+    },
     "games": {
       "page": { "title": "Spieleliste" },
       "table": {
         "title": "Titel",
         "mod": "Anzahl Mods",
         "version": "Aktuelle Version",
+        "created-at": "Erstellt am",
+        "updated-at": "Aktualisiert am",
         "actions": "Aktionen"
       },
       "create": {

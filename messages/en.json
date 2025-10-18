@@ -1,19 +1,25 @@
 {
   "global": {
+    "toast": {
+      "copied": "Copied to your clipboard successfully!"
+    },
     "actions": {
       "cancel": "Cancel",
       "submit": "Submit",
       "delete": "Delete",
       "save": "Save",
       "create": "Create",
-      "update": "Update"
+      "update": "Update",
+      "next": "Next",
+      "previous": "Previous"
     },
     "routes": {
       "home": "Home",
       "games": "Games",
       "mods": "Mods",
       "game-versions": "Game versions",
-      "mod-versions": "Mod versions"
+      "mod-versions": "Mod versions",
+      "images": "Images"
     },
     "zod-errors": {
       "base": "Validation failed for this field",
@@ -21,10 +27,12 @@
       "password-least-lowercase": "Password must include at least one lowercase letter.",
       "password-least-6": "Password must be at least 6 characters long.",
       "password-match": "Passwords must match.",
+      "required": "This field is required.",
       "empty": "A file must be provided.",
       "image-only": "Image only files",
-      "logo-100": "Logo must be ≤ 100KB",
-      "image-200": "Image must be ≤ 200KB"
+      "image-100": "Image must be ≤ 100KB",
+      "image-200": "Image must be ≤ 200KB",
+      "url": "Url must be from the blob store."
     }
   },
   "responsive-dialog": { "cancel": "Cancel" },
@@ -51,12 +59,39 @@
       "description": "You can modify landing data from here.",
       "button": "Create Games"
     },
+    "images": {
+      "page": { "title": "Images List" },
+      "table": {
+        "name": "Name",
+        "type": "File type",
+        "size": "File size",
+        "url": "Url",
+        "created-at": "Created at",
+        "actions": "Actions",
+        "copy": "Copy"
+      },
+      "create": {
+        "title": "Upload a new image",
+        "description": "Your file should be a PNG, JPG, JPEG or WEBP ≤ 200KB.",
+        "image-label": "Image",
+        "name-label": "Name",
+        "name-placeholder": "File name",
+        "success": "{name} was uploaded!"
+      },
+      "delete": {
+        "title": "Delete {name} file",
+        "description": "Are you sure? all items using this file url will be unavailable!",
+        "success": "{name} file was deleted."
+      }
+    },
     "games": {
       "page": { "title": "Games List" },
       "table": {
         "title": "Title",
         "mod": "Mod count",
         "version": "Current version",
+        "created-at": "Created at",
+        "updated-at": "Updated at",
         "actions": "Actions"
       },
       "create": {

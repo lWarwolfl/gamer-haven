@@ -7,7 +7,7 @@ export function useCreateGame() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (game: GameCreateSchemaProps) => createGameAction(game),
+    mutationFn: (data: GameCreateSchemaProps) => createGameAction(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GAMES] })
     },

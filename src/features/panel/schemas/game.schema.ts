@@ -1,3 +1,4 @@
+import { urlSchema } from '@/features/panel/schemas/url.schema'
 import { gameSchema } from '@/server/schemas/db.schema'
 import z from 'zod'
 
@@ -21,12 +22,13 @@ import z from 'zod'
 //   .refine((b) => b.size <= MAX_LOGO_SIZE, 'logo-100')
 
 export const gameCreateSchema = gameSchema
-  .pick({ title: true, description: true, slug: true, logo: true })
+  .pick({ title: true, description: true, slug: true })
   .extend({
+    logo: urlSchema,
     images: z
       .array(
         z.object({
-          url: z.string({ message: 'empty' }),
+          url: urlSchema,
         })
       )
       .max(5),
@@ -36,10 +38,11 @@ export type GameCreateSchemaProps = z.infer<typeof gameCreateSchema>
 export const gameUpdateSchema = gameSchema
   .pick({ id: true, title: true, description: true, slug: true, logo: true })
   .extend({
+    logo: urlSchema,
     images: z
       .array(
         z.object({
-          url: z.string({ message: 'empty' }),
+          url: urlSchema,
         })
       )
       .max(5)
