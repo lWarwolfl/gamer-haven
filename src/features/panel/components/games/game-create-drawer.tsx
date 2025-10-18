@@ -65,7 +65,7 @@ export default function GameCreateDrawer() {
     <Drawer open={open} onOpenChange={(open) => setOpen(open)}>
       <DrawerTrigger asChild>
         <Button>
-          {tActions('create')} <Icon icon="ph:plus" className="size-5" />
+          {tActions('create')} <Icon icon="ph:plus-bold" className="size-4.5" />
         </Button>
       </DrawerTrigger>
 
@@ -211,7 +211,7 @@ export default function GameCreateDrawer() {
           </FieldGroup>
         </form>
 
-        <DrawerFooter className="mx-auto max-w-3xl sm:flex-row">
+        <DrawerFooter className="mx-auto w-full max-w-3xl sm:flex-row">
           <DrawerClose asChild>
             <Button variant="outline">{tActions('cancel')}</Button>
           </DrawerClose>

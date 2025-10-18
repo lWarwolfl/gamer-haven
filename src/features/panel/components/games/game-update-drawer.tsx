@@ -72,8 +72,9 @@ export default function GameUpdateDrawer({ data }: GameUpdateDrawerProps) {
   return (
     <Drawer open={open} onOpenChange={(open) => setOpen(open)}>
       <DrawerTrigger asChild>
-        <Button size="sm" variant="secondary">
-          {tActions('update')} <Icon icon="ph:pencil-simple" className="size-4" />
+        <Button size="sm" variant="outline">
+          {tActions('update')}
+          <Icon icon="ph:pencil-simple-duotone" stroke="2px" className="size-4" />
         </Button>
       </DrawerTrigger>
 
@@ -219,7 +220,7 @@ export default function GameUpdateDrawer({ data }: GameUpdateDrawerProps) {
           </FieldGroup>
         </form>
 
-        <DrawerFooter className="mx-auto max-w-3xl sm:flex-row">
+        <DrawerFooter className="mx-auto w-full max-w-3xl sm:flex-row">
           <DrawerClose asChild>
             <Button variant="outline">{tActions('cancel')}</Button>
           </DrawerClose>

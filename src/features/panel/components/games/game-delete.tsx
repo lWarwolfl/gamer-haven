@@ -33,8 +33,9 @@ export default function GameDelete({ data }: GameDeleteProps) {
       title={t('title', { name: data.title })}
       description={t('description')}
       trigger={
-        <Button variant="secondary" size="sm">
-          {tActions('delete')} <Icon icon="ph:trash" className="text-destructive size-4" />
+        <Button variant="outline" size="sm">
+          {tActions('delete')}
+          <Icon icon="ph:trash-duotone" className="text-destructive size-4" />
         </Button>
       }
       action={
