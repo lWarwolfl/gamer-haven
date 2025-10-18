@@ -211,7 +211,7 @@ export default function GameCreateDrawer() {
           </FieldGroup>
         </form>
 
-        <DrawerFooter className="mx-auto w-full max-w-3xl sm:flex-row">
+        <DrawerFooter className="mx-auto max-w-3xl max-sm:w-full sm:flex-row">
           <DrawerClose asChild>
             <Button variant="outline">{tActions('cancel')}</Button>
           </DrawerClose>
