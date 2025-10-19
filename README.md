@@ -1,6 +1,6 @@
 # Gamer Haven
 
-**Game Modding Platform**
+## Game Modding Platform
 
 A game modding platform built with **Next.js** and **Drizzle ORM**, showcasing a scalable full-stack architecture with type-safe APIs and a clean user experience.
 
@@ -60,7 +60,7 @@ Gamer Haven lets you manage and distribute game mods with secure authentication,
 
 ## Project Structure
 
-```
+```bash
 gamer-haven/
 ├── src/
 │   ├── app/                    # Next.js App Router
