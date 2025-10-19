@@ -41,7 +41,7 @@ export default async function ModVersionsByModSlugPage({
 
       <ModCard mod={mod} body />
 
-      <ModVersionTable modVersions={modVersions} />
+      <ModVersionTable modVersions={modVersions} mod={mod} />
 
       {pagination && pagination.totalPages > 1 ? (
         <DataPagination pagination={pagination} onPageChange={onPageChange} />

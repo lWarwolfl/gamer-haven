@@ -3,6 +3,7 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { DataTable } from '@/components/ui/data-table'
+import { useTrackDownload } from '@/lib/mutations/track/useTrackDownload.mutation'
 import { TListModVersionsByModSlugAction } from '@/server/mod-version/listModVersionsByModSlug.action'
 import { Icon } from '@iconify/react'
 import { ColumnDef } from '@tanstack/react-table'
@@ -13,11 +14,14 @@ import Link from 'next/link'
 
 export type ModVersionTableProps = {
   modVersions: NonNullable<TListModVersionsByModSlugAction>['modVersions']
+  mod: NonNullable<TListModVersionsByModSlugAction>['mod']
 }
 
-export default function ModVersionTable({ modVersions }: ModVersionTableProps) {
+export default function ModVersionTable({ modVersions, mod }: ModVersionTableProps) {
   const t = useTranslations('panel.mod-versions.table')
   const locale = useLocale()
+
+  const { mutate: mutateTrackDownload } = useTrackDownload()
 
   const columns: ColumnDef<NonNullable<TListModVersionsByModSlugAction>['modVersions'][number]>[] =
     [
@@ -62,7 +66,11 @@ export default function ModVersionTable({ modVersions }: ModVersionTableProps) {
         cell: ({ row }) => {
           return (
             <div className="flex items-center gap-3">
-              <Button size="sm" asChild>
+              <Button
+                size="sm"
+                onClick={() => (mod ? mutateTrackDownload(mod.id) : undefined)}
+                asChild
+              >
                 <Link href={row.original.url} rel="noopenner no referrer">
                   {t('download')}
 

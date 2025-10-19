@@ -7,7 +7,7 @@ export async function createUserTokenAction() {
   const cookieS = await cookies()
   const userToken = cookieS.get('user_token')
 
-  if (!userToken) {
+  if (!userToken?.value) {
     cookieS.set('user_token', v4())
   }
 }
