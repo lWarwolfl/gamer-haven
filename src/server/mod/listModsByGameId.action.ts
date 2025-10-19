@@ -3,7 +3,7 @@
 import { db } from '@/drizzle'
 import { Mod } from '@/drizzle/schema'
 import { PaginationSchemaProps } from '@/server/schemas/pagination.schema'
-import { count } from 'drizzle-orm'
+import { count, eq } from 'drizzle-orm'
 
 export type ListModsByGameIdActionProps = PaginationSchemaProps & { gameId: string }
 
@@ -12,7 +12,7 @@ export async function listModsByGameIdAction({
   page = 1,
   gameId,
 }: ListModsByGameIdActionProps) {
-  const dbCount = await db.select({ count: count() }).from(Mod)
+  const dbCount = await db.select({ count: count() }).from(Mod).where(eq(Mod.gameId, gameId))
   const totalCount = dbCount[0].count
   const totalPages = Math.ceil(totalCount / limit)
 

@@ -3,7 +3,7 @@
 import { db } from '@/drizzle'
 import { ModVersion } from '@/drizzle/schema'
 import { PaginationSchemaProps } from '@/server/schemas/pagination.schema'
-import { count } from 'drizzle-orm'
+import { count, eq } from 'drizzle-orm'
 
 export type ListModVersionsByModIdActionProps = PaginationSchemaProps & { modId: string }
 
@@ -12,7 +12,10 @@ export async function listModVersionsByModIdAction({
   page = 1,
   modId,
 }: ListModVersionsByModIdActionProps) {
-  const dbCount = await db.select({ count: count() }).from(ModVersion)
+  const dbCount = await db
+    .select({ count: count() })
+    .from(ModVersion)
+    .where(eq(ModVersion.modId, modId))
   const totalCount = dbCount[0].count
   const totalPages = Math.ceil(totalCount / limit)
 

@@ -115,6 +115,13 @@ export const ModRelations = relations(Mod, ({ many, one }) => ({
   modDownloads: many(ModDownload),
 }))
 
+export const ModDownloadRelations = relations(ModDownload, ({ one }) => ({
+  mod: one(Mod, {
+    fields: [ModDownload.modId],
+    references: [Mod.id],
+  }),
+}))
+
 export const ModVersionRelations = relations(ModVersion, ({ many, one }) => ({
   mod: one(Mod, {
     fields: [ModVersion.modId],

@@ -3,7 +3,7 @@
 import { db } from '@/drizzle'
 import { GameVersion } from '@/drizzle/schema'
 import { PaginationSchemaProps } from '@/server/schemas/pagination.schema'
-import { count } from 'drizzle-orm'
+import { count, eq } from 'drizzle-orm'
 
 export type ListGameVersionsByGameIdActionProps = PaginationSchemaProps & { gameId: string }
 
@@ -12,7 +12,10 @@ export async function listGameVersionsByGameIdAction({
   page = 1,
   gameId,
 }: ListGameVersionsByGameIdActionProps) {
-  const dbCount = await db.select({ count: count() }).from(GameVersion)
+  const dbCount = await db
+    .select({ count: count() })
+    .from(GameVersion)
+    .where(eq(GameVersion.gameId, gameId))
   const totalCount = dbCount[0].count
   const totalPages = Math.ceil(totalCount / limit)
 
