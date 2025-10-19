@@ -1,36 +1,149 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Gamer Haven
 
-## Getting Started
+**Game Modding Platform**
 
-First, run the development server:
+A game modding platform built with **Next.js** and **Drizzle ORM**, showcasing a scalable full-stack architecture with type-safe APIs and a clean user experience.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## Overview
+
+Gamer Haven lets you manage and distribute game mods with secure authentication, dynamic content, analytics, and an admin dashboard—powered by a modern, type-safe stack.
+
+---
+
+## Core Features
+
+### Content & User Management
+
+* CRUD for games, mods, and versions
+* Rich text editing (TipTap)
+* Cloud file uploads (Vercel Blob Storage)
+* Role-based admin panel and visibility controls
+
+### User Experience
+
+* Responsive UI with dark/light themes
+* Advanced search, sorting, and pagination
+* PWA-ready
+* Form validation (React Hook Form + Zod)
+
+### Analytics
+
+* Download tracking and activity insights
+* Dashboard views backed by Drizzle + Supabase
+
+---
+
+## Tech Stack
+
+### Frontend
+
+* **Next.js 15** (App Router, Server Actions)
+* **React 19**, **TypeScript**
+* **Tailwind CSS**, **shadcn/ui**, **Radix UI**, **Lucide**
+
+### Backend & Database
+
+* **Drizzle ORM** + **PostgreSQL**
+* **Supabase** (Auth, SSR)
+* **Vercel Blob** (file storage/CDN)
+
+### Utilities
+
+* **TanStack Query** (data fetching/caching)
+* **Zustand** (state)
+* **Next-Intl** (i18n)
+* **Serwist** (PWA/service worker)
+
+---
+
+## Project Structure
+
+```
+gamer-haven/
+├── src/
+│   ├── app/                    # Next.js App Router
+│   │   ├── [locale]/          # Internationalized routing
+│   │   │   ├── (panel)/       # Admin dashboard routes
+│   │   │   └── (root)/        # Public application routes
+│   │   └── globals & metadata files
+│   ├── components/            # React components
+│   │   ├── common/           # Business logic components
+│   │   ├── layout/           # Layout components
+│   │   ├── providers/        # Context providers
+│   │   ├── ui/               # Design system components
+│   │   └── utils/            # Component utilities
+│   ├── drizzle/              # Database layer
+│   │   ├── index.ts          # Database connection
+│   │   └── schema.ts         # Database schema
+│   ├── features/             # Seperated panel feature files
+│   ├── i18n/                 # Internationalization config
+│   ├── lib/                  # Utility libraries
+│   │   ├── hooks/            # Custom React hooks
+│   │   ├── supabase/         # Supabase client configuration
+│   │   └── utils.ts          # General utilities
+│   ├── server/               # Server actions
+│   │   ├── feature/          # Feature management actions
+│   │   └── schemas/          # Validation schemas
+│   └── styles/               # Global styles
+├── messages/                 # Translation files
+├── public/                   # Static assets
+├── Configuration files
+└── Documentation
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
 
-## Learn More
+* Node.js 18+
+* PostgreSQL or Supabase
+* npm / pnpm / yarn
 
-To learn more about Next.js, take a look at the following resources:
+### Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+git clone <repository-url>
+cd gamer-haven
+npm install
+cp .env.example .env.local
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Add environment variables:
 
-## Deploy on Vercel
+```env
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+DATABASE_URL=
+BLOB_READ_WRITE_TOKEN=
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Run migrations and start:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npx drizzle-kit push
+npm run dev
+```
+
+App: [http://localhost:3000](http://localhost:3000)
+
+---
+
+## Key Implementations
+
+* Server Actions for type-safe client↔server communication
+* Drizzle ORM for schema-safe queries and migrations
+* Supabase Auth for sessions and route protection
+* Next-Intl for localized routing and SEO
+* Serwist for PWA and caching
+
+---
+
+## License
+
+MIT — see [LICENSE](LICENSE)
+
+---
