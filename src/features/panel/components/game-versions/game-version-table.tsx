@@ -21,7 +21,7 @@ export default function GameVersionTable({ gameId }: GameVersionTableProps) {
   const t = useTranslations('panel.game-versions.table')
 
   const [currentPage, setCurrentPage] = useState<number>(1)
-  const { data, isFetching } = useListGameVersionsByGameId({ page: currentPage, gameId })
+  const { data, isLoading } = useListGameVersionsByGameId({ page: currentPage, gameId })
 
   function onPageChange(page: number) {
     setCurrentPage(page)
@@ -52,6 +52,8 @@ export default function GameVersionTable({ gameId }: GameVersionTableProps) {
             />
 
             <span className="max-w-5/6 truncate">{row.original.game.title}</span>
+
+            {!row.original.game.visible ? <Icon icon="ph:eye-closed" className="size-3.5" /> : null}
           </div>
         )
       },
@@ -78,7 +80,7 @@ export default function GameVersionTable({ gameId }: GameVersionTableProps) {
     },
   ]
 
-  return isFetching ? (
+  return isLoading ? (
     <TableSkeleton />
   ) : (
     <>

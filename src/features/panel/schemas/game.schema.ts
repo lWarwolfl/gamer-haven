@@ -2,27 +2,8 @@ import { urlSchema } from '@/features/panel/schemas/url.schema'
 import { gameSchema } from '@/server/schemas/db.schema'
 import z from 'zod'
 
-// const MAX_IMAGE_SIZE = 200 * 1024
-// const MAX_LOGO_SIZE = 100 * 1024
-
-// const ImageBlobSchema = z
-//   .file()
-//   .refine((file) => file && file.name && file.name !== '', {
-//     message: 'empty',
-//   })
-//   .refine((b) => b.type.startsWith('image/'), 'image-only')
-//   .refine((b) => b.size <= MAX_IMAGE_SIZE, 'image-200')
-
-// const LogoBlobSchema = z
-//   .file()
-//   .refine((file) => file && file.name && file.name !== '', {
-//     message: 'empty',
-//   })
-//   .refine((b) => b.type.startsWith('image/'), 'image-only')
-//   .refine((b) => b.size <= MAX_LOGO_SIZE, 'logo-100')
-
 export const gameCreateSchema = gameSchema
-  .pick({ title: true, description: true, slug: true })
+  .pick({ title: true, description: true, slug: true, visible: true })
   .extend({
     logo: urlSchema,
     images: z
@@ -36,9 +17,11 @@ export const gameCreateSchema = gameSchema
 export type GameCreateSchemaProps = z.infer<typeof gameCreateSchema>
 
 export const gameUpdateSchema = gameSchema
-  .pick({ id: true, title: true, description: true, slug: true, logo: true })
+  .pick({ title: true, description: true, slug: true, visible: true })
+  .partial()
   .extend({
-    logo: urlSchema,
+    id: z.string(),
+    logo: urlSchema.optional(),
     images: z
       .array(
         z.object({

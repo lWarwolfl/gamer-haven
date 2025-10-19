@@ -1,5 +1,5 @@
 import { relations } from 'drizzle-orm'
-import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
+import { boolean, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 
 const id = uuid('id').primaryKey().defaultRandom()
 
@@ -10,6 +10,7 @@ export const Game = pgTable('games', {
   title: text('title').notNull(),
   description: text('description').notNull(),
   slug: text('slug').notNull().unique(),
+  visible: boolean('visible').notNull().default(true),
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at')
     .defaultNow()
@@ -37,6 +38,7 @@ export const Mod = pgTable('mods', {
   title: text('title').notNull(),
   description: text('description').notNull(),
   slug: text('slug').notNull().unique(),
+  visible: boolean('visible').notNull().default(true),
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at')
     .defaultNow()

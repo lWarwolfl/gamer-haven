@@ -21,7 +21,7 @@ export default function ImageTable() {
   const { copy } = useCopyToClipboard()
 
   const [currentPage, setCurrentPage] = useState<number>(1)
-  const { data, isFetching } = useListImages({ page: currentPage })
+  const { data, isLoading } = useListImages({ page: currentPage })
 
   function onPageChange(page: number) {
     setCurrentPage(page)
@@ -96,7 +96,7 @@ export default function ImageTable() {
     },
   ]
 
-  return isFetching ? (
+  return isLoading ? (
     <TableSkeleton columns={6} />
   ) : (
     <>

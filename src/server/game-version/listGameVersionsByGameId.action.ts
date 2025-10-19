@@ -19,7 +19,7 @@ export async function listGameVersionsByGameIdAction({
   const gameVersions = await db.query.GameVersion.findMany({
     orderBy: (t, { desc }) => desc(t.createdAt),
     where: (t, { eq }) => eq(t.gameId, gameId),
-    with: { game: { columns: { id: true, logo: true, title: true } } },
+    with: { game: { columns: { id: true, logo: true, title: true, visible: true } } },
     limit,
     offset: (page - 1) * limit,
   })

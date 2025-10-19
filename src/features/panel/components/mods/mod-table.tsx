@@ -3,13 +3,12 @@
 import { DataPagination } from '@/components/common/data-pagination'
 import { TableSkeleton } from '@/components/common/table-skeleton'
 import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
 import { DataTable } from '@/components/ui/data-table'
-import GameDelete from '@/features/panel/components/games/game-delete'
-import GameUpdateDrawer from '@/features/panel/components/games/game-update-drawer'
-import GameUpdateVisibility from '@/features/panel/components/games/game-update-visibility'
-import { useListGames } from '@/features/panel/queries/games/useListGames.query'
-import { TListGamesAction } from '@/server/game/listGames.action'
+import ModDelete from '@/features/panel/components/mods/mod-delete'
+import ModUpdateDrawer from '@/features/panel/components/mods/mod-update-drawer'
+import ModUpdateVisibility from '@/features/panel/components/mods/mod-update-visibility'
+import { useListModsByGameId } from '@/features/panel/queries/mods/useListModsByGameId.query'
+import { TListModsByGameIdAction } from '@/server/mod/listModsByGameId.action'
 import { Icon } from '@iconify/react'
 import { ColumnDef } from '@tanstack/react-table'
 import { format } from 'date-fns'
@@ -18,17 +17,19 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 
-export default function GameTable() {
-  const t = useTranslations('panel.games.table')
+export type ModTableProps = { gameId: string }
+
+export default function ModTable({ gameId }: ModTableProps) {
+  const t = useTranslations('panel.mods.table')
 
   const [currentPage, setCurrentPage] = useState<number>(1)
-  const { data, isLoading } = useListGames({ page: currentPage })
+  const { data, isLoading } = useListModsByGameId({ page: currentPage, gameId })
 
   function onPageChange(page: number) {
     setCurrentPage(page)
   }
 
-  const columns: ColumnDef<TListGamesAction['games'][number]>[] = [
+  const columns: ColumnDef<TListModsByGameIdAction['mods'][number]>[] = [
     {
       accessorKey: 'title',
       header: () => t('title'),
@@ -54,8 +55,12 @@ export default function GameTable() {
       cell: ({ row }) => {
         return (
           <div className="flex max-w-24 shrink-0 items-center gap-2">
-            <Link href={`/${row.original.slug}`} target="_blank" className="max-w-5/6 truncate">
-              /{row.original.slug}
+            <Link
+              href={`/mods/${row.original.slug}`}
+              target="_blank"
+              className="max-w-5/6 truncate"
+            >
+              /mods/{row.original.slug}
             </Link>
 
             <Icon icon="ph:arrow-square-out" className="size-4" />
@@ -66,26 +71,36 @@ export default function GameTable() {
     {
       accessorKey: 'visible',
       header: () => t('visible'),
-      cell: ({ row }) => <GameUpdateVisibility data={row.original} />,
-    },
-    {
-      accessorKey: 'mod',
-      header: () => t('mod'),
-      cell: ({ row }) => (
-        <Badge variant="secondary">
-          <Icon icon="ph:puzzle-piece" className="size-3.5" /> {row.original.mods.length}
-        </Badge>
-      ),
+      cell: ({ row }) => <ModUpdateVisibility data={row.original} />,
     },
     {
       accessorKey: 'version',
       header: () => t('version'),
+      cell: ({ row }) => (
+        <Badge variant="secondary">
+          <Icon icon="ph:package" className="size-3.5" />{' '}
+          {row.original.modVersions[0] ? row.original.modVersions[0].version : '-'}
+        </Badge>
+      ),
+    },
+    {
+      accessorKey: 'game',
+      header: () => t('game'),
       cell: ({ row }) => {
         return (
-          <Badge variant="secondary">
-            <Icon icon="ph:package" className="size-3.5" />
-            {row.original.gameVersions[0] ? row.original.gameVersions[0].version : '-'}
-          </Badge>
+          <div className="flex w-40 shrink-0 items-center gap-2">
+            <Image
+              alt={row.original.game.title}
+              width={50}
+              height={50}
+              className="size-5 rounded-xs object-cover object-center"
+              src={row.original.game.logo}
+            />
+
+            <span className="max-w-5/6 truncate">{row.original.game.title}</span>
+
+            {!row.original.game.visible ? <Icon icon="ph:eye-closed" className="size-3.5" /> : null}
+          </div>
         )
       },
     },
@@ -109,29 +124,9 @@ export default function GameTable() {
       cell: ({ row }) => {
         return (
           <div className="flex items-center gap-3">
-            <Button size="sm" variant="outline" asChild>
-              <Link
-                href={`/admin/dashboard/games/game-versions?gameId=${row.original.id}&game=${row.original.title}`}
-              >
-                {t('versions')}
+            <ModUpdateDrawer data={row.original} />
 
-                <Icon icon="ph:package" />
-              </Link>
-            </Button>
-
-            <Button size="sm" variant="outline" asChild>
-              <Link
-                href={`/admin/dashboard/games/mods?gameId=${row.original.id}&game=${row.original.title}`}
-              >
-                {t('mods')}
-
-                <Icon icon="ph:puzzle-piece" />
-              </Link>
-            </Button>
-
-            <GameUpdateDrawer data={row.original} />
-
-            <GameDelete data={row.original} />
+            <ModDelete data={row.original} />
           </div>
         )
       },
@@ -142,7 +137,7 @@ export default function GameTable() {
     <TableSkeleton columns={8} />
   ) : (
     <>
-      <DataTable data={data ? data.games : []} columns={columns} />
+      <DataTable data={data ? data.mods : []} columns={columns} />
 
       {data?.pagination && data.pagination.totalPages > 1 ? (
         <DataPagination pagination={data.pagination} onPageChange={onPageChange} />

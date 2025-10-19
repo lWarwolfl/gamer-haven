@@ -93,6 +93,21 @@ export function useLinks() {
           },
         ],
       },
+      {
+        type: 'sub',
+        name: t('mods'),
+        path: '/admin/dashboard/games/mods',
+        breadcrumb: [
+          {
+            name: t('games'),
+            path: '/admin/dashboard/games',
+          },
+          {
+            name: t('mods'),
+            path: '/admin/dashboard/games/mods',
+          },
+        ],
+      },
       // {
       //   name: t('mods'),
       //   icon: 'ph:puzzle-piece',

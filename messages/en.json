@@ -88,12 +88,14 @@
       "page": { "title": "Games List" },
       "table": {
         "title": "Title",
+        "visible": "Visible",
         "mod": "Mod count",
         "version": "Current version",
         "created-at": "Created at",
         "updated-at": "Updated at",
         "actions": "Actions",
         "versions": "Versions",
+        "url": "Url",
         "mods": "Mods"
       },
       "create": {
@@ -158,6 +160,50 @@
         "title": "Delete {name} game version",
         "description": "Are you sure?",
         "success": "{name} game version was deleted."
+      }
+    },
+    "mods": {
+      "page": { "title": "{name} Mods List" },
+      "table": {
+        "title": "title",
+        "visible": "Visible",
+        "version": "Current version",
+        "game": "Game",
+        "created-at": "Created at",
+        "updated-at": "Updated at",
+        "url": "Url",
+        "actions": "Actions"
+      },
+      "create": {
+        "title": "Create a new mod",
+        "description": "You can add download url in mod versions afterward.",
+        "title-label": "Title",
+        "title-placeholder": "Fabric API",
+        "description-label": "Description",
+        "description-placeholder": "Game summary",
+        "slug-label": "Slug",
+        "slug-placeholder": "Path",
+        "logo-label": "Logo",
+        "logo-placeholder": "Url",
+        "success": "{name} mod was created!"
+      },
+      "update": {
+        "title": "Update {name} mod",
+        "description": "You can add download url in mod versions afterward.",
+        "title-label": "Title",
+        "title-placeholder": "Fabric API",
+        "description-label": "Description",
+        "description-placeholder": "Game summary",
+        "slug-label": "Slug",
+        "slug-placeholder": "Path",
+        "logo-label": "Logo",
+        "logo-placeholder": "Url",
+        "success": "{name} game version was saved!"
+      },
+      "delete": {
+        "title": "Delete {name} mod",
+        "description": "Are you sure?",
+        "success": "{name} mod was deleted."
       }
     }
   },

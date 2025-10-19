@@ -7,9 +7,13 @@ export const gameVersionCreateSchema = gameVersionSchema.pick({
 })
 export type GameVersionCreateSchemaProps = z.infer<typeof gameVersionCreateSchema>
 
-export const gameVersionUpdateSchema = gameVersionSchema.pick({
-  id: true,
-  version: true,
-  gameId: true,
-})
+export const gameVersionUpdateSchema = gameVersionSchema
+  .pick({
+    version: true,
+    gameId: true,
+  })
+  .partial()
+  .extend({
+    id: z.string(),
+  })
 export type GameVersionUpdateSchemaProps = z.infer<typeof gameVersionUpdateSchema>
