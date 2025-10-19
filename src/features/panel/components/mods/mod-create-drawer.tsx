@@ -1,5 +1,6 @@
 'use client'
 
+import { RichTextEditor } from '@/components/common/rich-text-editor'
 import { SubmitButton } from '@/components/common/submit-button'
 import { Button } from '@/components/ui/button'
 import {
@@ -41,6 +42,7 @@ export default function ModCreateDrawer({ gameId }: ModCreateDrawerProps) {
       description: '',
       slug: '',
       logo: '',
+      body: '',
     },
   })
 
@@ -156,6 +158,19 @@ export default function ModCreateDrawer({ gameId }: ModCreateDrawerProps) {
                     rows={5}
                     aria-invalid={fieldState.invalid}
                   />
+                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+                </Field>
+              )}
+            />
+
+            <Controller
+              name="body"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor="body">{t('body-label')}</FieldLabel>
+
+                  <RichTextEditor content={field.value} onChange={field.onChange} />
                   {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
                 </Field>
               )}

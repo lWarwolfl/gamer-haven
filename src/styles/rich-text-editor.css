@@ -1,0 +1,92 @@
+@layer components {
+  /* Tiptap Editor Styles */
+  .ProseMirror {
+    @apply text-foreground;
+  }
+
+  .ProseMirror p.is-editor-empty:first-child::before {
+    @apply text-muted-foreground;
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    pointer-events: none;
+  }
+
+  .ProseMirror:focus {
+    @apply outline-none;
+  }
+
+  /* Enhanced prose styles with proper typography hierarchy and sizing */
+  .prose {
+    @apply text-foreground;
+  }
+
+  .prose h1 {
+    @apply text-foreground mt-6 mb-4 text-4xl leading-tight font-bold;
+  }
+
+  .prose h2 {
+    @apply text-foreground mt-5 mb-3 text-3xl leading-tight font-bold;
+  }
+
+  .prose h3 {
+    @apply text-foreground mt-4 mb-3 text-2xl leading-snug font-bold;
+  }
+
+  .prose h4 {
+    @apply text-foreground mt-4 mb-2 text-xl leading-snug font-semibold;
+  }
+
+  .prose h5 {
+    @apply text-foreground mt-3 mb-2 text-lg leading-normal font-semibold;
+  }
+
+  .prose h6 {
+    @apply text-foreground mt-3 mb-2 text-base leading-normal font-semibold;
+  }
+
+  .prose p {
+    @apply text-foreground mb-4 leading-relaxed;
+  }
+
+  .prose strong {
+    @apply text-foreground font-bold;
+  }
+
+  .prose em {
+    @apply text-foreground italic;
+  }
+
+  .prose code {
+    @apply bg-muted text-foreground rounded px-1.5 py-0.5 font-mono text-sm;
+  }
+
+  .prose blockquote {
+    @apply border-border text-muted-foreground my-4 border-l-4 pl-4 italic;
+  }
+
+  .prose ul {
+    @apply mb-4 list-disc space-y-2 pl-6;
+  }
+
+  .prose ol {
+    @apply mb-4 list-decimal space-y-2 pl-6;
+  }
+
+  .prose li {
+    @apply text-foreground leading-relaxed;
+  }
+
+  .prose a {
+    @apply text-primary hover:text-primary/80 cursor-pointer underline underline-offset-4 transition-colors;
+  }
+
+  /* Added specific link styling for better visibility in editor */
+  .ProseMirror a {
+    @apply text-primary hover:text-primary/80 cursor-pointer underline underline-offset-4 transition-colors;
+  }
+
+  .dark .prose {
+    @apply text-foreground;
+  }
+}

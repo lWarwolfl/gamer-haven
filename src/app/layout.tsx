@@ -5,7 +5,7 @@ import { getAlternativeLocales, getLocaleWithProps } from '@/i18n/i18n-configs'
 import { cn } from '@/lib/utils'
 import type { Metadata } from 'next'
 import { PropsWithChildren } from 'react'
-import './globals.css'
+import '../styles/globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL(HOST + '/'),

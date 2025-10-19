@@ -1,6 +1,5 @@
 'use client'
 
-import { RichTextEditor } from '@/components/common/rich-text-editor'
 import { SubmitButton } from '@/components/common/submit-button'
 import { Button } from '@/components/ui/button'
 import {
@@ -16,10 +15,20 @@ import {
 import { Field, FieldError, FieldGroup, FieldLabel } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Textarea } from '@/components/ui/textarea'
-import { useUpdateGame } from '@/features/panel/mutations/games/useUpdateGame.mutation'
-import { gameUpdateSchema, GameUpdateSchemaProps } from '@/features/panel/schemas/game.schema'
-import { TListGamesAction } from '@/server/game/listGames.action'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import { useUpdateModVersion } from '@/features/panel/mutations/mod-versions/useUpdateModVersion.mutation'
+import { useListGameVersionsByGameId } from '@/features/panel/queries/game-versions/useListGameVersionsByGameId.query'
+import {
+  modVersionUpdateSchema,
+  ModVersionUpdateSchemaProps,
+} from '@/features/panel/schemas/modVersion.schema'
+import { TListModVersionsByModIdAction } from '@/server/mod-version/listModVersionsByModId.action'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
@@ -27,43 +36,47 @@ import { useState } from 'react'
 import { Controller, useFieldArray, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
-export type GameUpdateDrawerProps = { data: TListGamesAction['games'][number] }
+export type ModVersionUpdateDrawerProps = {
+  data: TListModVersionsByModIdAction['modVersions'][number]
+}
 
-export default function GameUpdateDrawer({ data }: GameUpdateDrawerProps) {
+export default function ModVersionUpdateDrawer({ data }: ModVersionUpdateDrawerProps) {
   const tActions = useTranslations('global.actions')
-  const t = useTranslations('panel.games.update')
+  const t = useTranslations('panel.mod-versions.update')
 
   const [open, setOpen] = useState<boolean>(false)
 
-  const form = useForm<GameUpdateSchemaProps>({
+  const { data: dataGameVersions, isLoading: isLoadingGameVersions } = useListGameVersionsByGameId({
+    limit: 50,
+    gameId: data.mod.game.id,
+  })
+
+  const form = useForm<ModVersionUpdateSchemaProps>({
     mode: 'onSubmit',
-    resolver: zodResolver(gameUpdateSchema),
+    resolver: zodResolver(modVersionUpdateSchema),
     defaultValues: {
       id: data.id,
-      title: data.title,
+      version: data.version,
       description: data.description,
-      slug: data.slug,
-      images: data.images
-        ? data.images.map((item) => {
-            return { url: item }
-          })
-        : [{ url: '' }],
-      logo: data.logo,
-      body: data.body,
+      url: data.url,
+      gameVersions: data.modVersionGameVersions.map((item) => {
+        return { version: item.gameVersion.id }
+      }),
     },
   })
 
   const { fields, append, remove } = useFieldArray({
     control: form.control,
-    name: 'images',
+    name: 'gameVersions',
   })
 
-  const { mutate: mutateUpdateGame, isPending: isPendingUpdateGame } = useUpdateGame()
+  const { mutate: mutateUpdateModVersion, isPending: isPendingUpdateModVersion } =
+    useUpdateModVersion()
 
-  function onSubmit(values: GameUpdateSchemaProps) {
-    mutateUpdateGame(values, {
+  function onSubmit(values: ModVersionUpdateSchemaProps) {
+    mutateUpdateModVersion(values, {
       onSuccess: (res) => {
-        if (res) toast.success(t('success', { name: res[0].title }))
+        if (res) toast.success(t('success', { name: res.modVersions[0].version }))
 
         setOpen(false)
         form.reset(form.formState.defaultValues)
@@ -82,28 +95,28 @@ export default function GameUpdateDrawer({ data }: GameUpdateDrawerProps) {
 
       <DrawerContent>
         <DrawerHeader>
-          <DrawerTitle>{t('title', { name: data.title })}</DrawerTitle>
+          <DrawerTitle>{t('title', { name: data.version })}</DrawerTitle>
           <DrawerDescription>{t('description')}</DrawerDescription>
         </DrawerHeader>
 
         <form
-          id="game-update-form"
+          id="mod-version-update-form"
           onSubmit={form.handleSubmit(onSubmit)}
           className="mx-auto w-full max-w-3xl overflow-x-visible"
         >
           <FieldGroup className="max-h-[75vh] overflow-y-auto px-3 py-1.5">
             <Controller
-              name="title"
+              name="version"
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="title">{t('title-label')}</FieldLabel>
+                  <FieldLabel htmlFor="version">{t('version-label')}</FieldLabel>
 
                   <Input
                     {...field}
-                    id="title"
+                    id="version"
                     type="text"
-                    placeholder={t('title-placeholder')}
+                    placeholder="1.1.0"
                     required
                     autoComplete="off"
                     aria-invalid={fieldState.invalid}
@@ -114,38 +127,17 @@ export default function GameUpdateDrawer({ data }: GameUpdateDrawerProps) {
             />
 
             <Controller
-              name="logo"
+              name="url"
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="logo">{t('logo-label')}</FieldLabel>
+                  <FieldLabel htmlFor="url">{t('url-label')}</FieldLabel>
 
                   <Input
                     {...field}
-                    id="logo"
+                    id="url"
                     type="text"
-                    placeholder={t('images-placeholder')}
-                    required
-                    autoComplete="off"
-                    aria-invalid={fieldState.invalid}
-                  />
-                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-                </Field>
-              )}
-            />
-
-            <Controller
-              name="slug"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="slug">{t('slug-label')}</FieldLabel>
-
-                  <Input
-                    {...field}
-                    id="slug"
-                    type="text"
-                    placeholder={t('slug-placeholder')}
+                    placeholder={t('url-placeholder')}
                     required
                     autoComplete="off"
                     aria-invalid={fieldState.invalid}
@@ -162,13 +154,13 @@ export default function GameUpdateDrawer({ data }: GameUpdateDrawerProps) {
                 <Field data-invalid={fieldState.invalid}>
                   <FieldLabel htmlFor="description">{t('description-label')}</FieldLabel>
 
-                  <Textarea
+                  <Input
                     {...field}
                     id="description"
-                    autoComplete="off"
+                    type="text"
                     placeholder={t('description-placeholder')}
                     required
-                    rows={5}
+                    autoComplete="off"
                     aria-invalid={fieldState.invalid}
                   />
                   {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
@@ -177,12 +169,12 @@ export default function GameUpdateDrawer({ data }: GameUpdateDrawerProps) {
             />
 
             <div className="flex flex-col gap-3">
-              <Label>{t('images-label')}</Label>
+              <Label>{t('game-verions-label')}</Label>
 
               <Button
                 type="button"
                 variant="outline"
-                onClick={() => append({ url: '' })}
+                onClick={() => append({ version: '' })}
                 disabled={fields.length >= 10}
                 className="flex-1"
               >
@@ -191,20 +183,27 @@ export default function GameUpdateDrawer({ data }: GameUpdateDrawerProps) {
 
               {fields.map((field, index) => (
                 <Controller
-                  key={`images.${index}.url`}
-                  name={`images.${index}.url`}
+                  key={`gameVersions.${index}.version`}
+                  name={`gameVersions.${index}.version`}
                   control={form.control}
                   render={({ field: { ...field }, fieldState }) => (
                     <Field data-invalid={fieldState.invalid} className="relative">
                       <div className="flex items-center gap-2">
-                        <Input
-                          {...field}
-                          id={`image-file-${index}`}
-                          type="text"
-                          autoComplete="off"
-                          placeholder={t('images-placeholder')}
-                          aria-invalid={fieldState.invalid}
-                        />
+                        <Select {...field} disabled={isLoadingGameVersions}>
+                          <SelectTrigger className="w-full">
+                            <SelectValue placeholder={t('game-verions-placeholder')} />
+                          </SelectTrigger>
+
+                          <SelectContent>
+                            {dataGameVersions
+                              ? dataGameVersions.gameVersions.map((item) => (
+                                  <SelectItem key={item.id} value={item.id}>
+                                    {item.version}
+                                  </SelectItem>
+                                ))
+                              : null}
+                          </SelectContent>
+                        </Select>
 
                         <Button size="icon" variant="outline" onClick={() => remove(index)}>
                           <Icon icon="ph:x" className="text-destructive size-4.5" />
@@ -219,19 +218,6 @@ export default function GameUpdateDrawer({ data }: GameUpdateDrawerProps) {
                 />
               ))}
             </div>
-
-            <Controller
-              name="body"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="body">{t('body-label')}</FieldLabel>
-
-                  <RichTextEditor content={field.value} onChange={field.onChange} />
-                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-                </Field>
-              )}
-            />
           </FieldGroup>
         </form>
 
@@ -240,7 +226,7 @@ export default function GameUpdateDrawer({ data }: GameUpdateDrawerProps) {
             <Button variant="outline">{tActions('cancel')}</Button>
           </DrawerClose>
 
-          <SubmitButton onClick={form.handleSubmit(onSubmit)} loading={isPendingUpdateGame}>
+          <SubmitButton onClick={form.handleSubmit(onSubmit)} loading={isPendingUpdateModVersion}>
             {tActions('save')}
           </SubmitButton>
         </DrawerFooter>

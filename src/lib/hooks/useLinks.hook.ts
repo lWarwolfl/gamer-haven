@@ -108,11 +108,25 @@ export function useLinks() {
           },
         ],
       },
-      // {
-      //   name: t('mods'),
-      //   icon: 'ph:puzzle-piece',
-      //   path: '/admin/dashboard/mods',
-      // },
+      {
+        type: 'sub',
+        name: t('mod-versions'),
+        path: '/admin/dashboard/games/mods/mod-versions',
+        breadcrumb: [
+          {
+            name: t('games'),
+            path: '/admin/dashboard/games',
+          },
+          {
+            name: t('mods'),
+            path: '/admin/dashboard/games/mods',
+          },
+          {
+            name: t('mod-versions'),
+            path: '/admin/dashboard/games/mods/mod-versions',
+          },
+        ],
+      },
     ] as const
 
     return {

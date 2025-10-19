@@ -3,6 +3,7 @@
 import { DataPagination } from '@/components/common/data-pagination'
 import { TableSkeleton } from '@/components/common/table-skeleton'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import { DataTable } from '@/components/ui/data-table'
 import ModDelete from '@/features/panel/components/mods/mod-delete'
 import ModUpdateDrawer from '@/features/panel/components/mods/mod-update-drawer'
@@ -124,6 +125,16 @@ export default function ModTable({ gameId }: ModTableProps) {
       cell: ({ row }) => {
         return (
           <div className="flex items-center gap-3">
+            <Button size="sm" variant="outline" asChild>
+              <Link
+                href={`/admin/dashboard/games/mods/mod-versions?gameId=${gameId}&modId=${row.original.id}&mod=${row.original.title}`}
+              >
+                {t('versions')}
+
+                <Icon icon="ph:package" />
+              </Link>
+            </Button>
+
             <ModUpdateDrawer data={row.original} />
 
             <ModDelete data={row.original} />

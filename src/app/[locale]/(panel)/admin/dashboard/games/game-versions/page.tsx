@@ -4,11 +4,11 @@ import GameVersionTable from '@/features/panel/components/game-versions/game-ver
 import { getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 
-export type DashboardPageProps = {
+export type GameVersionsPageProps = {
   searchParams: Promise<{ gameId: string | undefined; game: string | undefined }>
 }
 
-export default async function GameVersionsPage({ searchParams }: DashboardPageProps) {
+export default async function GameVersionsPage({ searchParams }: GameVersionsPageProps) {
   const t = await getTranslations('panel.game-versions.page')
   const { gameId, game } = await searchParams
 

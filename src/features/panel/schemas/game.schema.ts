@@ -3,21 +3,19 @@ import { gameSchema } from '@/server/schemas/db.schema'
 import z from 'zod'
 
 export const gameCreateSchema = gameSchema
-  .pick({ title: true, description: true, slug: true, visible: true })
+  .pick({ title: true, description: true, slug: true, visible: true, body: true })
   .extend({
     logo: urlSchema,
-    images: z
-      .array(
-        z.object({
-          url: urlSchema,
-        })
-      )
-      .max(5),
+    images: z.array(
+      z.object({
+        url: urlSchema,
+      })
+    ),
   })
 export type GameCreateSchemaProps = z.infer<typeof gameCreateSchema>
 
 export const gameUpdateSchema = gameSchema
-  .pick({ title: true, description: true, slug: true, visible: true })
+  .pick({ title: true, description: true, slug: true, visible: true, body: true })
   .partial()
   .extend({
     id: z.string(),
@@ -28,7 +26,6 @@ export const gameUpdateSchema = gameSchema
           url: urlSchema,
         })
       )
-      .max(5)
       .optional(),
   })
 export type GameUpdateSchemaProps = z.infer<typeof gameUpdateSchema>

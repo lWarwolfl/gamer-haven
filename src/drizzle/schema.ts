@@ -1,5 +1,5 @@
 import { relations } from 'drizzle-orm'
-import { boolean, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
+import { boolean, pgTable, text, timestamp, unique, uuid } from 'drizzle-orm/pg-core'
 
 const id = uuid('id').primaryKey().defaultRandom()
 
@@ -9,6 +9,7 @@ export const Game = pgTable('games', {
   images: text('images').array().default([]),
   title: text('title').notNull(),
   description: text('description').notNull(),
+  body: text('body'),
   slug: text('slug').notNull().unique(),
   visible: boolean('visible').notNull().default(true),
   createdAt: timestamp('created_at').defaultNow().notNull(),
@@ -37,6 +38,7 @@ export const Mod = pgTable('mods', {
   logo: text('logo').notNull(),
   title: text('title').notNull(),
   description: text('description').notNull(),
+  body: text('body'),
   slug: text('slug').notNull().unique(),
   visible: boolean('visible').notNull().default(true),
   createdAt: timestamp('created_at').defaultNow().notNull(),
@@ -47,6 +49,20 @@ export const Mod = pgTable('mods', {
 })
 export type TMod = typeof Mod.$inferSelect
 
+export const ModDownload = pgTable(
+  'mod-downloads',
+  {
+    id,
+    modId: uuid('mod_id')
+      .notNull()
+      .references(() => Mod.id, { onDelete: 'cascade' }),
+    userToken: text('userToken').notNull(),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+  },
+  (t) => [unique().on(t.modId, t.userToken)]
+)
+export type TModDownload = typeof ModDownload.$inferSelect
+
 export const ModVersion = pgTable('mod-versions', {
   id,
   modId: uuid('mod_id')
@@ -55,7 +71,6 @@ export const ModVersion = pgTable('mod-versions', {
   version: text('version').notNull(),
   url: text('url').notNull(),
   description: text('description').notNull(),
-  slug: text('slug').notNull().unique(),
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at')
     .defaultNow()
@@ -97,6 +112,7 @@ export const ModRelations = relations(Mod, ({ many, one }) => ({
     references: [Game.id],
   }),
   modVersions: many(ModVersion),
+  modDownloads: many(ModDownload),
 }))
 
 export const ModVersionRelations = relations(ModVersion, ({ many, one }) => ({

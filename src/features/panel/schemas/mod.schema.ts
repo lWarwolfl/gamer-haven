@@ -7,6 +7,7 @@ export const modCreateSchema = modSchema.pick({
   description: true,
   gameId: true,
   logo: true,
+  body: true,
 })
 export type ModCreateSchemaProps = z.infer<typeof modCreateSchema>
 
@@ -18,6 +19,7 @@ export const modUpdateSchema = modSchema
     gameId: true,
     logo: true,
     visible: true,
+    body: true,
   })
   .partial()
   .extend({

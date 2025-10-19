@@ -110,6 +110,7 @@
         "images-label": "Slider images",
         "images-placeholder": "Url",
         "logo-label": "Logo",
+        "body-label": "Content body",
         "add": "Add image",
         "delete": "Delete",
         "success": "{name} game was created!"
@@ -126,6 +127,7 @@
         "images-label": "Slider images",
         "images-placeholder": "Url",
         "logo-label": "Logo",
+        "body-label": "Content body",
         "add": "Add image",
         "delete": "Delete",
         "success": "{name} game was saved!"
@@ -172,6 +174,7 @@
         "created-at": "Created at",
         "updated-at": "Updated at",
         "url": "Url",
+        "versions": "Versions",
         "actions": "Actions"
       },
       "create": {
@@ -185,6 +188,7 @@
         "slug-placeholder": "Path",
         "logo-label": "Logo",
         "logo-placeholder": "Url",
+        "body-label": "Content body",
         "success": "{name} mod was created!"
       },
       "update": {
@@ -198,12 +202,59 @@
         "slug-placeholder": "Path",
         "logo-label": "Logo",
         "logo-placeholder": "Url",
-        "success": "{name} game version was saved!"
+        "body-label": "Content body",
+        "success": "{name} mod was saved!"
       },
       "delete": {
         "title": "Delete {name} mod",
         "description": "Are you sure?",
         "success": "{name} mod was deleted."
+      }
+    },
+    "mod-versions": {
+      "page": { "title": "{name} Mod Versions List" },
+      "table": {
+        "version": "Version",
+        "mod": "Mod",
+        "description": "Description",
+        "game-versions": "Game versions",
+        "created-at": "Created at",
+        "updated-at": "Updated at",
+        "download": "Download",
+        "actions": "Actions"
+      },
+      "create": {
+        "title": "Create a new mod version",
+        "description": "You can add multiple game versions that this supports.",
+        "version-label": "Version",
+        "description-label": "Description",
+        "description-placeholder": "Extra info(Stablity, Conflicts, etc.)",
+        "url-label": "Download url",
+        "url-placeholder": "https://linkfromcdn.example/download",
+        "game-verions-label": "Game versions",
+        "game-verions-placeholder": "Choose a version",
+        "add": "Add version",
+        "delete": "Delete",
+        "success": "{name} mod version was created!"
+      },
+      "update": {
+        "title": "Update {name} mod version",
+        "description": "You can add multiple game versions that this supports.",
+        "version-label": "Version",
+        "description-label": "Description",
+        "description-placeholder": "Extra info(Stablity, Conflicts, etc.)",
+        "url-label": "Download url",
+        "url-placeholder": "https://linkfromcdn.example/download",
+        "game-verions-label": "Game versions",
+        "game-verions-placeholder": "Choose a version",
+        "add": "Add version",
+        "delete": "Delete",
+        "success": "{name} mod version was saved!"
+      },
+      "delete": {
+        "title": "Delete {name} mod version",
+        "description": "Are you sure?",
+        "success": "{name} mod version was deleted."
       }
     }
   },

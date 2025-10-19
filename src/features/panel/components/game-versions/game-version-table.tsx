@@ -44,7 +44,7 @@ export default function GameVersionTable({ gameId }: GameVersionTableProps) {
         return (
           <div className="flex w-40 shrink-0 items-center gap-2">
             <Image
-              alt={row.original.version}
+              alt={row.original.game.title}
               width={50}
               height={50}
               className="size-5 rounded-xs object-cover object-center"
