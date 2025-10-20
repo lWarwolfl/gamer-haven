@@ -39,6 +39,13 @@
   "header": { "search": "Suche", "search-placeholder": "Dein Lieblings-Mod..." },
   "footer": { "language": "Sprache auswählen" },
   "home": { "hello": "Hallo Welt!" },
+  "landing": {
+    "games": "Spiele",
+    "game": "Spiel",
+    "mods": "Mods",
+    "mod": "Mod",
+    "mod-versions": "Mod-Versionen"
+  },
   "panel": {
     "breadcrumb": { "base": "Admin-Dashboard" },
     "sidebar": {
@@ -88,11 +95,15 @@
       "page": { "title": "Spieleliste" },
       "table": {
         "title": "Titel",
+        "visible": "Sichtbar",
         "mod": "Anzahl Mods",
         "version": "Aktuelle Version",
         "created-at": "Erstellt am",
         "updated-at": "Aktualisiert am",
-        "actions": "Aktionen"
+        "actions": "Aktionen",
+        "versions": "Versionen",
+        "url": "URL",
+        "mods": "Mods"
       },
       "create": {
         "title": "Neues Spiel erstellen",
@@ -106,6 +117,7 @@
         "images-label": "Slider-Bilder",
         "images-placeholder": "URL",
         "logo-label": "Logo",
+        "body-label": "Inhaltsbereich",
         "add": "Bild hinzufügen",
         "delete": "Löschen",
         "success": "Das Spiel {name} wurde erstellt!"
@@ -122,6 +134,7 @@
         "images-label": "Slider-Bilder",
         "images-placeholder": "URL",
         "logo-label": "Logo",
+        "body-label": "Inhaltsbereich",
         "add": "Bild hinzufügen",
         "delete": "Löschen",
         "success": "Das Spiel {name} wurde gespeichert!"
@@ -130,6 +143,127 @@
         "title": "Spiel {name} löschen",
         "description": "Bist du sicher?",
         "success": "Das Spiel {name} wurde gelöscht."
+      }
+    },
+    "game-versions": {
+      "page": { "title": "{name} Spielversionen-Liste" },
+      "table": {
+        "version": "Version",
+        "game": "Spiel",
+        "created-at": "Erstellt am",
+        "actions": "Aktionen"
+      },
+      "create": {
+        "title": "Neue Spielversion erstellen",
+        "description": "Versionsnummern sollten immer in der Reihenfolge der Erstellung höher werden.",
+        "version-label": "Version",
+        "success": "Spielversion {name} wurde erstellt!"
+      },
+      "update": {
+        "title": "Spielversion {name} aktualisieren",
+        "description": "Versionsnummern sollten immer in der Reihenfolge der Erstellung höher werden.",
+        "version-label": "Version",
+        "success": "Spielversion {name} wurde gespeichert!"
+      },
+      "delete": {
+        "title": "Spielversion {name} löschen",
+        "description": "Bist du sicher?",
+        "success": "Spielversion {name} wurde gelöscht."
+      }
+    },
+    "mods": {
+      "page": { "title": "{name} Mods-Liste" },
+      "table": {
+        "title": "Titel",
+        "visible": "Sichtbar",
+        "version": "Aktuelle Version",
+        "game": "Spiel",
+        "created-at": "Erstellt am",
+        "updated-at": "Aktualisiert am",
+        "url": "URL",
+        "versions": "Versionen",
+        "actions": "Aktionen"
+      },
+      "create": {
+        "title": "Neuen Mod erstellen",
+        "description": "Du kannst die Download-URL später in den Mod-Versionen hinzufügen.",
+        "title-label": "Titel",
+        "title-placeholder": "Fabric API",
+        "description-label": "Beschreibung",
+        "description-placeholder": "Spielzusammenfassung",
+        "slug-label": "Slug",
+        "slug-placeholder": "Pfad",
+        "logo-label": "Logo",
+        "logo-placeholder": "URL",
+        "body-label": "Inhaltsbereich",
+        "success": "Mod {name} wurde erstellt!"
+      },
+      "update": {
+        "title": "Mod {name} aktualisieren",
+        "description": "Du kannst die Download-URL später in den Mod-Versionen hinzufügen.",
+        "title-label": "Titel",
+        "title-placeholder": "Fabric API",
+        "description-label": "Beschreibung",
+        "description-placeholder": "Spielzusammenfassung",
+        "slug-label": "Slug",
+        "slug-placeholder": "Pfad",
+        "logo-label": "Logo",
+        "logo-placeholder": "URL",
+        "body-label": "Inhaltsbereich",
+        "success": "Mod {name} wurde gespeichert!"
+      },
+      "delete": {
+        "title": "Mod {name} löschen",
+        "description": "Bist du sicher?",
+        "success": "Mod {name} wurde gelöscht."
+      }
+    },
+    "mod-versions": {
+      "page": { "title": "{name} Mod-Versionen-Liste" },
+      "table": {
+        "version": "Version",
+        "mod": "Mod",
+        "description": "Beschreibung",
+        "platform": "Plattform",
+        "released": "Veröffentlicht",
+        "game-versions": "Spielversionen",
+        "created-at": "Erstellt am",
+        "updated-at": "Aktualisiert am",
+        "download": "Download",
+        "actions": "Aktionen"
+      },
+      "create": {
+        "title": "Neue Mod-Version erstellen",
+        "description": "Du kannst mehrere Spielversionen hinzufügen, die dies unterstützen.",
+        "version-label": "Version",
+        "description-label": "Beschreibung",
+        "description-placeholder": "Zusätzliche Infos (Stabilität, Konflikte, etc.)",
+        "url-label": "Download-URL",
+        "url-placeholder": "https://linkfromcdn.example/download",
+        "game-verions-label": "Spielversionen",
+        "game-verions-placeholder": "Wähle eine Version",
+        "add": "Version hinzufügen",
+        "delete": "Löschen",
+        "success": "Mod-Version {name} wurde erstellt!"
+      },
+      "update": {
+        "title": "Mod-Version {name} aktualisieren",
+        "description": "Du kannst mehrere Spielversionen hinzufügen, die dies unterstützen.",
+        "version-label": "Version",
+        "description-label": "Beschreibung",
+        "description-placeholder": "Zusätzliche Infos (Stabilität, Konflikte, etc.)",
+        "url-label": "Download-URL",
+        "url-placeholder": "https://linkfromcdn.example/download",
+        "game-verions-label": "Spielversionen",
+        "game-verions-placeholder": "Wähle eine Version",
+        "add": "Version hinzufügen",
+        "delete": "Löschen",
+        "success": "Mod-Version {name} wurde gespeichert!"
+      },
+      "delete": {
+        "title": "Mod-Version {name} löschen",
+        "description": "Bist du sicher?",
+        "success": "Mod-Version {name} wurde gelöscht."
       }
     }
   },
