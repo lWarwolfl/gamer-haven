@@ -1,6 +1,5 @@
 'use client'
 
-import SearchBar from '@/components/common/search-bar'
 import { ThemeToggle } from '@/components/common/theme-toggle'
 import logo from '@public/logo.svg'
 import Image from 'next/image'
@@ -40,9 +39,9 @@ export default function Header() {
         </div>
       </header>
 
-      <div className="sm:hidden">
+      {/* <div className="sm:hidden">
         <SearchBar />
-      </div>
+      </div> */}
     </>
   )
 }

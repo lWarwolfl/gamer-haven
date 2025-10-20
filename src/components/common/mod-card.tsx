@@ -15,11 +15,7 @@ export type ModCardProps = React.ComponentProps<'div'> & {
 export default function ModCard({ mod, className, body, ...props }: ModCardProps) {
   function Content() {
     return (
-      <h3
-        className={cn('flex items-center gap-3 text-lg font-medium', {
-          'pt-5': body,
-        })}
-      >
+      <h3 className="flex flex-wrap items-center gap-3 text-lg font-medium">
         <span className="group-hover:underline">{mod.title}</span>
 
         <Badge>
@@ -40,32 +36,46 @@ export default function ModCard({ mod, className, body, ...props }: ModCardProps
   return (
     <div
       className={cn(
-        'bg-card ring-border hover:bg-muted flex w-full items-center gap-4 rounded-lg p-4 ring transition-colors ring-inset',
-        { 'items-start': body },
+        'bg-card ring-border hover:bg-muted flex w-full flex-wrap items-start gap-4 rounded-lg p-4 ring transition-colors ring-inset',
         className
       )}
       {...props}
     >
-      <Image
-        alt={mod.title}
-        width={200}
-        height={200}
-        src={mod.logo}
-        className="size-16 rounded-md object-cover object-center"
-      />
-
       {body ? (
-        <div className="group flex max-h-[60dvh] flex-col gap-1 overflow-y-auto pe-3 underline-offset-2">
-          <Content />
+        <>
+          <div className="group flex items-start gap-4 pe-3 underline-offset-2 md:items-center">
+            <Image
+              alt={mod.title}
+              width={200}
+              height={200}
+              src={mod.logo}
+              className="size-16 rounded-md object-cover object-center"
+            />
 
-          <div className="prose w-full" dangerouslySetInnerHTML={{ __html: mod.body || '' }} />
-        </div>
+            <Content />
+          </div>
+
+          <div
+            className="prose max-h-[46dvh] basis-full overflow-y-auto"
+            dangerouslySetInnerHTML={{ __html: mod.body || '' }}
+          />
+        </>
       ) : (
-        <Link href={`/mods/${mod.slug}`} className="group flex flex-col gap-1 underline-offset-2">
-          <Content />
+        <>
+          <Image
+            alt={mod.title}
+            width={200}
+            height={200}
+            src={mod.logo}
+            className="size-16 rounded-md object-cover object-center"
+          />
 
-          <p className="line-clamp-2 text-sm group-hover:underline">{mod.description}</p>
-        </Link>
+          <Link href={`/mods/${mod.slug}`} className="group flex flex-col gap-1 underline-offset-2">
+            <Content />
+
+            <p className="line-clamp-2 text-sm group-hover:underline">{mod.description}</p>
+          </Link>
+        </>
       )}
     </div>
   )

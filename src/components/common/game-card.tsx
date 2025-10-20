@@ -24,7 +24,7 @@ export default function GameCard({ game, logo, className, ...props }: GameCardPr
   function Content() {
     return (
       <>
-        <h3 className="flex items-center gap-3 text-lg font-medium">
+        <h3 className="flex items-center gap-3 text-lg font-medium flex-wrap">
           <span className="group-hover:underline">{game.title}</span>
 
           <Badge>
