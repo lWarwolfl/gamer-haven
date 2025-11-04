@@ -21,6 +21,7 @@ export const listGamesCachedAction = cache(
           limit: 1,
         },
       },
+      where: (t, { eq }) => eq(t.visible, true),
       limit,
       offset: (page - 1) * limit,
     })

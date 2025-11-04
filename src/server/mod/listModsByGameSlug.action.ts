@@ -29,7 +29,7 @@ export const listModsByGameSlugAction = cache(
 
     const mods = await db.query.Mod.findMany({
       orderBy: (t, { desc }) => desc(t.createdAt),
-      where: (t, { eq }) => eq(t.gameId, game.id),
+      where: (t, { eq, and }) => and(eq(t.gameId, game.id), eq(t.visible, true)),
       with: {
         modDownloads: { columns: { id: true } },
         game: { columns: { id: true, logo: true, title: true, visible: true } },
